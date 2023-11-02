@@ -1,3 +1,6 @@
+import datetime
+import random
+
 
 def user_input():
     """
@@ -15,7 +18,13 @@ def user_input():
 
 
 
-#def travel_dates():
+def travel_date():
+    """
+    Get input from the user about travel date
+    """
+    departure = input("When do you want to travel? (MM/DD/YYY):\n")
+    return departure
+
 
 
 
@@ -24,6 +33,9 @@ def user_input():
 
 def main():
     print("Welcome to the Random Destination Generator!")
+    
+    user_choice = user_input()
+    departure = travel_date()
 
 
 
