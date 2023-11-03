@@ -36,8 +36,12 @@ def duration():
     """
     Get input from the user about the duration of the stay
     """
-    travel_duration = int(input("How many days are you planning to stay?:\n"))
-    return duration
+    while True:
+        travel_duration = (input("How many days are you planning to stay?:\n"))
+        if travel_duration.isdigit():
+            return int(travel_duration)
+        else:
+            print("Invalid input. Please enter a number!")
 
 
 def main():
