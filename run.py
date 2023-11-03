@@ -66,17 +66,18 @@ def continent():
         if user_selection in random_city_dict:
             return user_selection
         else:
-            print("Invalid continten. Please choose from the continents listed")
+            print("Invalid continent. Please choose from the continents listed")
 
 
 def main():
-    print("Welcome to the Random Destination Generator!")
+    print("Welcome to the Random Destination Generator! \n")
+    print("Get a random travel destination based on you choice of continent....let's begin! \n")
     
     user_choice = user_input()
     departure = travel_date()
     travel_duration = duration()
     user_selection = continent()
 
-
+   
 
 main()
