@@ -61,7 +61,7 @@ random_city_dict= {
 
 "Asia": [
 {"City": "Tokyo", "Price": 750}, 
-{"City": "Manilla", "Price" 700}, 
+{"City": "Manilla", "Price": 700}, 
 {"City": "Hanoi", "Price": 730}, 
 {"City": "Singapore", "Price": 680}, 
 {"City": "Seoul", "Price": 760}
@@ -89,6 +89,7 @@ random_city_dict= {
 {"City": "Lima", "Price": 850}, 
 {"City": "Bogotá", "Price": 750}, 
 {"City": "Caracas", "Price": 780},
+]
 }
 
 
@@ -106,14 +107,22 @@ def continent():
 
 
 
-"""def random_destination(user_selection):
-    
-  Returns a random city from the dictionaryto the user. Based on the user input in the 
+def random_destination():
+    """
+    Returns a random city from the dictionaryto the user. Based on the user input in the 
     continent function.
+    """
+    city = random.choice(list(random_city_dict.keys()))
+    random_city = random.choice(random_city_dict[city])
+    return random_city
 
-    if user_selection in random_city_dict:
-        return random[]
-"""
+    print(f"Random city: random_city['City']")
+    
+    
+
+    #if user_selection in random_city_dict:
+        #return 
+
 
 def main():
     print("Welcome to the Random Destination Generator! \n")
@@ -123,6 +132,8 @@ def main():
     departure = travel_date()
     travel_duration = duration()
     user_selection = continent()
+    random_city = random_destination()
+    
 
    
 
