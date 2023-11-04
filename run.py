@@ -8,13 +8,13 @@ def user_input():
     choice. The while loop will repeat and request data that is valid
     """
     while True:
-        user_choice = input("Are you traveling alone or with company? (alone/with company):\n").strip()
-        if user_choice == "alone":
-            return "alone"
-        elif user_choice == "with company":
-            return "with company"
+        user_choice = (input("How many travelers are there? (1 if you are traveling alone, 2 or more for traveling with company:\n"))
+        if user_choice.isdigit() == 1:
+            return 1
+        elif user_choice.isdigit() >= 1:
+            return int(user_choice)
         else:
-            print("Invalid choice. Please enter 'alone' or 'with company'.")
+            print("Invalid choice. Please enter a valid number!")
 
 
 
@@ -34,7 +34,8 @@ def travel_date():
 
 def duration():
     """
-    Get input from the user about the duration of the stay
+    Get input from the user about the duration of the stay with
+    validation to make sure the user only can type in numbers.
     """
     while True:
         travel_duration = (input("How many days are you planning to stay?:\n"))
@@ -67,6 +68,10 @@ def continent():
             return user_selection
         else:
             print("Invalid continent. Please choose from the continents listed")
+
+
+
+#def random_destination():
 
 
 def main():
