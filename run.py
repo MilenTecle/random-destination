@@ -51,45 +51,44 @@ def duration():
 
 #A dictionary of lists for each continent to return a random city to the user
 random_city_dict= {
-"Africa": [
-{"City": "Cairo", "Price": 450}, 
-{"City": "Addis Abeba", "Price": 750}, 
-{"City": "Cape Town", "Price": 800},
-{"City": "Stone Town", "Price": 800}, 
-{"City": "Casablanca", "Price": 450}
-],
+    "Africa": [
+        {"City": "Cairo", "Price": 450}, 
+        {"City": "Addis Abeba", "Price": 750}, 
+        {"City": "Cape Town", "Price": 800},
+        {"City": "Stone Town", "Price": 800}, 
+        {"City": "Casablanca", "Price": 450}
+    ],
+    "Asia": [
+        {"City": "Tokyo", "Price": 750}, 
+        {"City": "Manilla", "Price": 700}, 
+        {"City": "Hanoi", "Price": 730}, 
+        {"City": "Singapore", "Price": 680}, 
+        {"City": "Seoul", "Price": 760}
 
-"Asia": [
-{"City": "Tokyo", "Price": 750}, 
-{"City": "Manilla", "Price": 700}, 
-{"City": "Hanoi", "Price": 730}, 
-{"City": "Singapore", "Price": 680}, 
-{"City": "Seoul", "Price": 760}
+    ],
+    "Europe": [
+        {"City": "Rome", "Price": 300}, 
+        {"City": "Madrid", "Price": 350}, 
+        {"City": "London", "Price": 380}, 
+        {"City": "Athens", "Price": 400}, 
+        {"City": "Berlin", "Price": 280}
 
-],
-"Europe": [
-{"City": "Rome", "Price": 300}, 
-{"City": "Madrid", "Price": 350}, 
-{"City": "London", "Price": 380}, 
-{"City": "Athens", "Price": 400}, 
-{"City": "Berlin", "Price": 280}
+    ],
+    "North America": [
+        {"City": "Santo Domingo", "Price": 650}, 
+        {"City": "Mexico City", "Price": 450}, 
+        {"City": "New York City", "Price": 500}, 
+        {"City": "Calgary", "Price": 580}, 
+        {"City": "Havana", "Price": 620}
 
-],
-"North America": [
-{"City": "Santo Domingo", "Price": 650}, 
-{"City": "Mexico City", "Price": 450}, 
-{"City": "New York City", "Price": 500}, 
-{"City": "Calgary", "Price": 580}, 
-{"City": "Havana", "Price": 620}
-
-],
-"South America": [
-{"City": "Rio de Janerio", "Price": 700}, 
-{"City": "Buenos Aires", "Price": 800}, 
-{"City": "Lima", "Price": 850}, 
-{"City": "Bogotá", "Price": 750}, 
-{"City": "Caracas", "Price": 780},
-]
+    ],
+    "South America": [
+        {"City": "Rio de Janerio", "Price": 700}, 
+        {"City": "Buenos Aires", "Price": 800}, 
+        {"City": "Lima", "Price": 850}, 
+        {"City": "Bogotá", "Price": 750}, 
+        {"City": "Caracas", "Price": 780},
+    ]
 }
 
 
@@ -108,25 +107,35 @@ def continent():
 
 
 
-def random_destination():
+def random_destination(user_selection):
     """
     Returns a random city and the price from the dictionary to the user. Based on the user input in the 
     continent function.
     """
-    city = random.choice(list(random_city_dict.keys()))
-    random_city = random.choice(random_city_dict[city])
-    the_city = random_city["City"]
-    the_price = random_city["Price"]
-  
-    print(f"Your Random destination is: \nCity: {the_city}")
-    print(f"Price: {the_price}$")
+    if user_selection in random_city_dict:
+        random_city = random.choice(random_city_dict[user_selection])
+        the_city = random_city["City"]
+        the_price = random_city["Price"]
+
+        print(f"Your Random destination is: \nCity: {the_city}")
+        print(f"Price: {the_price}$")
     
 
 def another_choice():
-    new_choice = input("Do you want to choose another city?: (y/n)\n")
+    new_choice = input("Do you want to choose another city?: (y/n)\n").upper()
     if new_choice == "y":
         return(continent())
+    
       
+
+def summary(user_choice, departure, travel_date, the_city, the_price):
+    print("Here is your travel information: \n\n")
+    print(f"Traveling on: {user_choice}")
+    print(f"Number of people traveling: {departure}")
+    print(f"Duration of stay: {travel_date}")
+    print(f"Destination: {the_city}")
+    print(f"Total cost: ${the_price}")
+
 
 
 def main():
@@ -137,8 +146,9 @@ def main():
     departure = travel_date()
     travel_duration = duration()
     user_selection = continent()
-    random_city = random_destination()
+    random_destination(user_selection)
     new_choice = another_choice()
+    summary(user_choice, departure, travel_date, the_city, the_price)
     
 
    
