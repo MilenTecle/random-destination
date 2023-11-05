@@ -1,5 +1,6 @@
 from dateutil.parser import parse
 from datetime import datetime
+from colorama import Fore
 import random
 
 
@@ -11,12 +12,11 @@ def user_input():
     """
     while True:
         user_choice = (input("How many travelers are there? (1 if you are traveling alone, 2 or more for traveling with company:\n"))
-        if user_choice.isdigit() == 1:
-            return int(user_choice)
-        elif user_choice.isdigit() >= 2:
+        if user_choice.isdigit() >= 1:
             return int(user_choice)
         else:
-            print("Invalid choice. Please enter a valid number!")
+            print(Fore.YELLOW + "Invalid choice. Please enter a valid number!")
+            print(Fore.RESET)
 
 
 
@@ -30,7 +30,8 @@ def travel_date():
             day_and_date = parse(departure)
             return day_and_date
         except ValueError:
-            print("Invalid date format. Please enter the date in YYYY-MM-DD format")
+            print(Fore.YELLOW +"Invalid date format. Please enter the date in YYYY-MM-DD format")
+            print(Fore.RESET)
     
 
 
@@ -44,10 +45,9 @@ def duration():
         if travel_duration.isdigit():
             return int(travel_duration)
         else:
-            print("Invalid input. Please enter a number!")
+            print(Fore.YELLOW + "Invalid input. Please enter a number!")
+            print(Fore.RESET)
 
-
-#print(f"Travel duration: {travel_duration} days")
 
 #A dictionary of lists for each continent to return a random city to the user
 random_city_dict= {
@@ -103,7 +103,8 @@ def continent():
         if user_selection in random_city_dict:
             return user_selection
         else:
-            print("Invalid continent. Please choose from the continents listed")
+            print(Fore.YELLOW + "Invalid continent. Please choose from the continents listed")
+            print(Fore.RESET)
 
 
 
