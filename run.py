@@ -28,6 +28,7 @@ def travel_date():
         try:
             day_and_date = parse(departure, dayfirst=True)
             if parse(departure) >= day_and_date.today():
+                print(day_and_date.strftime("%A"))
                 return day_and_date
             else:
                 print(Fore.YELLOW +"Please enter a valid date in YYYY-MM-DD format"+ Fore.RESET)
@@ -131,11 +132,11 @@ def another_choice():
     
       
 
-def summary(user_choice, departure, travel_date, the_city, the_price):
+def summary(user_choice, departure, travel_duration, the_city, the_price):
     print("Here is your travel information: \n")
-    print(f"Traveling on: {user_choice}")
-    print(f"Number of people traveling: {departure}")
-    print(f"Duration of stay: {travel_date}")
+    print(f"Traveling on: {departure}")
+    print(f"Number of people traveling: {user_choice}")
+    print(f"Duration of stay: {travel_duration} days")
     print(f"Destination: {the_city}")
     print(f"Total cost: ${the_price}")
 
@@ -152,7 +153,7 @@ def main():
     random_destination(user_selection)
     new_choice = another_choice()
     the_city, the_price = random_destination(user_selection)
-    summary(user_choice, departure, travel_date, the_city, the_price)
+    summary(user_choice, departure, travel_duration, the_city, the_price)
     
 
    
