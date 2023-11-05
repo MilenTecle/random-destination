@@ -119,6 +119,7 @@ def random_destination(user_selection):
 
         print(f"Your Random destination is: \nCity: {the_city}")
         print(f"Price: {the_price}$")
+        return the_city, the_price
     
 
 def another_choice():
@@ -129,7 +130,7 @@ def another_choice():
       
 
 def summary(user_choice, departure, travel_date, the_city, the_price):
-    print("Here is your travel information: \n\n")
+    print("Here is your travel information: \n")
     print(f"Traveling on: {user_choice}")
     print(f"Number of people traveling: {departure}")
     print(f"Duration of stay: {travel_date}")
@@ -148,6 +149,7 @@ def main():
     user_selection = continent()
     random_destination(user_selection)
     new_choice = another_choice()
+    the_city, the_price = random_destination(user_selection)
     summary(user_choice, departure, travel_date, the_city, the_price)
     
 
