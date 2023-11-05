@@ -97,6 +97,7 @@ random_city_dict= {
 def continent():
     """
     Get user input. User needs to select a contintent to get a random city returned
+    in the random_destination function.
     """
     while True:
         user_selection = input("Choose a continent (Africa, Asia, Europe, North America, South America): \n")
@@ -109,14 +110,16 @@ def continent():
 
 def random_destination():
     """
-    Returns a random city from the dictionaryto the user. Based on the user input in the 
+    Returns a random city and the price from the dictionary to the user. Based on the user input in the 
     continent function.
     """
     city = random.choice(list(random_city_dict.keys()))
     random_city = random.choice(random_city_dict[city])
-    return random_city
-
-    print(f"Random city: random_city['City']")
+    the_city = random_city["City"]
+    the_price = random_city["Price"]
+  
+    print(f"Your Random destination is: \n{the_city}")
+    print(f"Price: {the_price}$")
     
     
 
