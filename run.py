@@ -15,9 +15,8 @@ def user_input():
         if user_choice.isdigit() >= 1:
             return int(user_choice)
         else:
-            print(Fore.YELLOW + "Invalid choice. Please enter a valid number!")
-            print(Fore.RESET)
-
+            print(Fore.YELLOW + "Invalid choice. Please enter a valid number!"+ Fore.RESET)
+            
 
 
 def travel_date():
@@ -27,13 +26,15 @@ def travel_date():
     while True:
         departure = input("When do you want to travel? (YYYY-MM-DD):\n")
         try:
-            day_and_date = parse(departure)
-            return day_and_date
+            day_and_date = parse(departure, dayfirst=True)
+            if parse(departure) >= day_and_date.today():
+                return day_and_date
+            else:
+                print(Fore.YELLOW +"Please enter a valid date in YYYY-MM-DD format"+ Fore.RESET)
         except ValueError:
-            print(Fore.YELLOW +"Invalid date format. Please enter the date in YYYY-MM-DD format")
-            print(Fore.RESET)
+            print(Fore.YELLOW +"Please enter a valid date in YYYY-MM-DD format"+ Fore.RESET)
+            
     
-
 
 def duration():
     """
@@ -45,8 +46,8 @@ def duration():
         if travel_duration.isdigit():
             return int(travel_duration)
         else:
-            print(Fore.YELLOW + "Invalid input. Please enter a number!")
-            print(Fore.RESET)
+            print(Fore.YELLOW + "Invalid input. Please enter a number!"+ Fore.RESET)
+           
 
 
 #A dictionary of lists for each continent to return a random city to the user
@@ -103,8 +104,8 @@ def continent():
         if user_selection in random_city_dict:
             return user_selection
         else:
-            print(Fore.YELLOW + "Invalid continent. Please choose from the continents listed")
-            print(Fore.RESET)
+            print(Fore.YELLOW + "Invalid continent. Please choose from the continents listed"+ Fore.RESET)
+           
 
 
 
