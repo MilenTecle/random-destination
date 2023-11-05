@@ -118,13 +118,15 @@ def random_destination():
     the_city = random_city["City"]
     the_price = random_city["Price"]
   
-    print(f"Your Random destination is: \n{the_city}")
+    print(f"Your Random destination is: \nCity: {the_city}")
     print(f"Price: {the_price}$")
     
-    
 
-    #if user_selection in random_city_dict:
-        #return 
+def another_choice():
+    new_choice = input("Do you want to choose another city?: (y/n)\n")
+    if new_choice == "y":
+        return(continent())
+      
 
 
 def main():
@@ -136,6 +138,7 @@ def main():
     travel_duration = duration()
     user_selection = continent()
     random_city = random_destination()
+    new_choice = another_choice()
     
 
    
