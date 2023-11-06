@@ -2,6 +2,7 @@ from dateutil.parser import parse
 from datetime import datetime
 from termcolor import colored
 from pyfiglet import figlet_format
+from tabulate import tabulate
 import random
 
 
@@ -134,16 +135,25 @@ def another_choice():
         return(continent())
     
       
-
+"""
+Function to display a summary over the travel information, taking
+the parameters all related to the travel info. From users input and the
+random city generated. The summary will be displayed in a table using the tabulate module
+"""
 def summary(user_choice, departure, travel_duration, the_city, the_price):
+    travel_details = [
+        ["Traveling on:", departure],
+        ["Number of people traveling:", user_choice],
+        ["Duration of stay:", f"{travel_duration} days"],
+        ["Destination:", the_city],
+        ["Total cost:", f"${the_price}"],
+    ]
+    
+    table_style = "grid"
+    table = tabulate(travel_details, tablefmt=table_style)
+
     print("Here is your travel information: \n")
-    print(f"Traveling on: {departure}")
-    print(f"Number of people traveling: {user_choice}")
-    print(f"Duration of stay: {travel_duration} days")
-    print(f"Destination: {the_city}")
-    print(f"Total cost: ${the_price}")
-
-
+    print(colored(table, color="yellow"))
 
 def main():
     #Change the welcomes text font color and text to ascii art
