@@ -1,6 +1,7 @@
 from dateutil.parser import parse
 from datetime import datetime
-from colorama import Fore
+from termcolor import colored
+from pyfiglet import figlet_format
 import random
 
 
@@ -15,13 +16,15 @@ def user_input():
         if user_choice.isdigit() >= 1:
             return int(user_choice)
         else:
-            print(Fore.YELLOW + "Invalid choice. Please enter a valid number!"+ Fore.RESET)
+            print(colored("Invalid choice. Please enter a valid number!", "red"))
             
 
 
 def travel_date():
     """
-    Get input from the user about travel date
+    Get input from the user about travel date. A while loop that will repeat until a valid date is entered.
+    The parse method is used to validate the date format.
+    Dayfirst is used to validate that the user's input is a date in the future and not in the past.
     """
     while True:
         departure = input("When do you want to travel? (YYYY-MM-DD):\n")
@@ -31,9 +34,9 @@ def travel_date():
                 print(day_and_date.strftime("%A"))
                 return day_and_date
             else:
-                print(Fore.YELLOW +"Please enter a valid date in YYYY-MM-DD format"+ Fore.RESET)
+                print(colored("Please enter a valid date in YYYY-MM-DD format", "red"))
         except ValueError:
-            print(Fore.YELLOW +"Please enter a valid date in YYYY-MM-DD format"+ Fore.RESET)
+            print(colored("Please enter a valid date in YYYY-MM-DD format", "red"))
             
     
 
@@ -47,7 +50,7 @@ def duration():
         if travel_duration.isdigit():
             return int(travel_duration)
         else:
-            print(Fore.YELLOW + "Invalid input. Please enter a number!"+ Fore.RESET)
+            print(colored("Invalid input. Please enter a number!", "red"))
            
 
 
@@ -105,7 +108,7 @@ def continent():
         if user_selection in random_city_dict:
             return user_selection
         else:
-            print(Fore.YELLOW + "Invalid continent. Please choose from the continents listed"+ Fore.RESET)
+            print(colored("Invalid continent. Please choose from the continents listed", "red"))
            
 
 
@@ -143,7 +146,10 @@ def summary(user_choice, departure, travel_duration, the_city, the_price):
 
 
 def main():
-    print("Welcome to the Random Destination Generator! \n")
+    #Change the font color and text to ascii art
+    banner_text = "Welcome to the Random Destination\n Generator!"
+    print(colored(figlet_format(banner_text, font="small"), color="cyan"))
+
     print("Get a random travel destination based on your choice of continent....let's begin! \n")
     
     user_choice = user_input()
