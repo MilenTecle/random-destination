@@ -146,9 +146,23 @@ def summary(user_choice, departure, travel_duration, the_city, the_price):
 
 
 def main():
-    #Change the font color and text to ascii art
+    #Change the welcomes text font color and text to ascii art
     banner_text = "Welcome to the Random Destination\n Generator!"
     print(colored(figlet_format(banner_text, font="small"), color="cyan"))
+
+    #Ascii art file to print airplane image
+    airplane_file = "airplane.txt"
+
+    try:
+        with open(airplane_file, "r") as file:
+            airplane = file.read()
+            print(colored(airplane, color="green"))
+    except FileNotFoundError:
+        print("File not found")
+
+
+
+
 
     print("Get a random travel destination based on your choice of continent....let's begin! \n")
     
