@@ -147,12 +147,13 @@ the parameters all related to the travel info. From users input and the
 random city generated. The summary will be displayed in a table using the tabulate module
 """
 def summary(user_choice, departure, travel_duration, the_city, the_price):
+    total_cost = user_choice * the_price
     travel_details = [
         ["Traveling on:", departure],
         ["Number of people traveling:", user_choice],
         ["Duration of stay:", f"{travel_duration} days"],
         ["Destination:", the_city],
-        ["Total cost:", f"${the_price}"],
+        ["Total cost:", f"${total_cost}"],
     ]
     
     table_style = "grid"
