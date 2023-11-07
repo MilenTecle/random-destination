@@ -163,9 +163,24 @@ def summary(user_choice, departure, travel_duration, the_city, the_price):
     print(colored(table, color="yellow"))
 
 def main():
+    """
     #Change the welcomes text font color and text to ascii art
-    banner_text = "Welcome to the Random Destination\n Generator!"
-    print(colored(figlet_format(banner_text, font="small"), color="cyan"))
+    welcome = "Welcome"
+    text = "to the Random Destination Generator!\n\n"
+    print(colored(figlet_format(welcome, font="doom"), color="light_blue"))
+    print(colored(text, "light_blue"))
+"""
+
+    #Ascii art file to print welcome text
+    welcome_text = "welcome.txt"
+
+    try:
+        with open(welcome_text, "r") as file:
+            welcome = file.read()
+            print(welcome)
+    except FileNotFoundError:
+        print("File not found")
+
 
     #Ascii art file to print airplane image
     airplane_file = "airplane.txt"
@@ -173,9 +188,11 @@ def main():
     try:
         with open(airplane_file, "r") as file:
             airplane = file.read()
-            print(colored(airplane, color="green"))
+            print(colored(airplane, color="magenta"))
+            print("\n")
     except FileNotFoundError:
         print("File not found")
+        
 
 
 
