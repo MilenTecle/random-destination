@@ -10,11 +10,11 @@ def user_input():
     """
     Get input from user and to make sure user is making a valid 
     choice. The while loop will repeat and request data that is valid.
-    The user can only enter a number.
+    The user can only enter a number starting from 1.
     """
     while True:
-        user_choice = (input("How many travelers are there? (1 if you are traveling alone, 2 or more for traveling with company:\n"))
-        if user_choice.isdigit() >= 1:
+        user_choice = (input("How many travelers are there? \n(1 if you are traveling alone, 2 or more for traveling with company:\n\n"))
+        if user_choice.isdigit() and int(user_choice) > 0:
             return int(user_choice)
         else:
             print(colored("Invalid choice. Please enter a valid number!", "red"))
@@ -28,11 +28,11 @@ def travel_date():
     Dayfirst is used to validate that the user's input is a date in the future and not in the past.
     """
     while True:
-        departure = input("When do you want to travel? (YYYY-MM-DD):\n")
+        departure = input("When do you want to travel? (YYYY-MM-DD):\n\n")
         try:
             day_and_date = parse(departure, dayfirst=True)
             if parse(departure) >= day_and_date.today():
-                print(day_and_date.strftime("%A"))
+                print(day_and_date.strftime("%A\n"))
                 return day_and_date
             else:
                 print(colored("Please enter a valid date in YYYY-MM-DD format", "red"))
@@ -44,11 +44,12 @@ def travel_date():
 def duration():
     """
     Get input from the user about the duration of the stay with
-    validation to make sure the user only can type in numbers.
+    validation to make sure the user only can type in numbers,
+    starting from 1.
     """
     while True:
-        travel_duration = (input("How many days are you planning to stay?:\n"))
-        if travel_duration.isdigit():
+        travel_duration = (input("How many days are you planning to stay?:\n\n"))
+        if travel_duration.isdigit() and int(travel_duration) > 0:
             return int(travel_duration)
         else:
             print(colored("Invalid input. Please enter a number!", "red"))
@@ -105,7 +106,7 @@ def continent():
     in the random_destination function.
     """
     while True:
-        user_selection = input("Choose a continent (Africa, Asia, Europe, North America, South America): \n")
+        user_selection = input("Choose a continent (Africa, Asia, Europe, North America, South America): \n\n")
         if user_selection in random_city_dict:
             return user_selection
         else:
@@ -124,15 +125,20 @@ def random_destination(user_selection):
         the_city = random_city["City"]
         the_price = random_city["Price"]
 
-        print(f"Your Random destination is: \nCity: {the_city}")
-        print(f"Price: {the_price}$")
+        print(f"Your Random destination is: \n\nCity: {the_city}")
+        print(f"Price: {the_price}$\n")
         return the_city, the_price
     
 
 def another_choice():
-    new_choice = input("Do you want to choose another city?: (y/n)\n").upper()
+    new_choice = input("Do you want to choose another city?: (y/n)\n\n").upper()
     if new_choice == "y":
-        return(continent())
+        return continent()
+    elif new_choice == "n":
+        return summary()
+    else:
+        print("Invalid choice. Please enter y or n")
+
     
       
 """
@@ -174,7 +180,7 @@ def main():
 
 
 
-    print("Get a random travel destination based on your choice of continent....let's begin! \n")
+    print("Get a random travel destination based on your choice of continent\n....let's begin! \n")
     
     user_choice = user_input()
     departure = travel_date()
