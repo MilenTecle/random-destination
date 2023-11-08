@@ -8,6 +8,7 @@ from tabulate import tabulate
 import random
 
 #Lists the API:s for access
+#Code from my Love Sandwiches project
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -19,15 +20,9 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('random-destination')
 
-africa = SHEET.worksheet('Africa')
-asia= SHEET.worksheet('Asia')
-europe = SHEET.worksheet('Europe')
-north_america = SHEET.worksheet('North America')
-south_america = SHEET.worksheet('South America')
+continents = SHEET.worksheet('continents')
 
-data = africa.get_all_values()
-
-#print(data)
+data = continents.get_all_values()
 
 
 def user_input():
@@ -156,15 +151,29 @@ def random_destination(user_selection):
     
 
 def another_choice():
-    new_choice = input("  Do you want to choose another city?: (y/n)\n\n  ").upper()
-    if new_choice == "y":
-        return continent()
-    elif new_choice == "n":
-        return summary()
-    else:
-        print("  Invalid choice. Please enter y or n")
+    while True:
+        new_choice = input("  Do you want to choose another city?: (y/n)\n\n  ").lower()
+        if new_choice == "y":
+            return continent()
+        elif new_choice == "n":
+            break
+        else:
+            print("  Invalid choice. Please enter 'y' or 'n'")
 
+def travel_package():
+    while True:
+        accomodation = input("  Do you want to add accomodation?: (y/n)\n\n  ").lower()
+        if accomodation =="y":
+            return accomodation_choices()
+        elif accomodation == "n":
+            break
+        else:
+            print("  Invalid choice. Please enter 'y' or 'n'")
+
+
+def accomodation_choices():
     
+
       
 """
 Function to display a summary over the travel information, taking
