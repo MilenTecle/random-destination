@@ -1,9 +1,33 @@
+import gspread
+from google.oauth2.service_account import Credentials
 from dateutil.parser import parse
 from datetime import datetime
 from termcolor import colored
 from pyfiglet import figlet_format
 from tabulate import tabulate
 import random
+
+#Lists the API:s for access
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('random-destination')
+
+africa = SHEET.worksheet('Africa')
+asia= SHEET.worksheet('Asia')
+europe = SHEET.worksheet('Europe')
+north_america = SHEET.worksheet('North America')
+south_america = SHEET.worksheet('South America')
+
+data = africa.get_all_values()
+
+#print(data)
 
 
 def user_input():
