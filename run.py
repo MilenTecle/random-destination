@@ -32,7 +32,8 @@ def travel_date():
         try:
             day_and_date = parse(departure, dayfirst=True)
             if parse(departure) >= day_and_date.today():
-                print(day_and_date.strftime("%A"))
+                weekday = day_and_date.strftime("%A")
+                print(f"  {weekday}\n")
                 return day_and_date
             else:
                 print(colored("  Please enter a valid date in YYYY-MM-DD format", "red"))
@@ -125,7 +126,7 @@ def random_destination(user_selection):
         the_city = random_city["City"]
         the_price = random_city["Price"]
 
-        print(f"  Your Random destination is: \n\n  City: {the_city}\n  ")
+        print(f"  Your Random destination is: \n\n  City: {the_city}")
         print(f"  Price: {the_price}$\n"  )
         return the_city, the_price
     
@@ -170,22 +171,19 @@ def main():
     print(colored(figlet_format(welcome, font="doom"), color="light_blue"))
     print(colored(text, "light_blue"))
 """
+    
+    #Ascii art file to print images
 
-    #Ascii art file to print welcome text
     welcome_text = "welcome.txt"
+    airplane_file = "airplane.txt"
 
+    #Prints welcome text
     try:
         with open(welcome_text, "r") as file:
             welcome = file.read()
             print(welcome)
-    except FileNotFoundError:
-        print("  File not found")
-
-
-    #Ascii art file to print airplane image
-    airplane_file = "airplane.txt"
-
-    try:
+    
+    #Prints airplane image
         with open(airplane_file, "r") as file:
             airplane = file.read()
             print(colored(airplane, color="light_blue"))
@@ -199,7 +197,7 @@ def main():
 
 
     print("  Get a random travel destination based on your choice of continent.\n  Let's begin! \n")
-    input("  Press Enter to continue...\n  ")
+    input("  Press any key to continue...\n  ")
 
     user_choice = user_input()
     departure = travel_date()
