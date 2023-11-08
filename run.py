@@ -172,9 +172,29 @@ def travel_package():
 
 
 def accomodation_choices():
+    print("  Select an option for accomodation\n")
+    print("  1. Luxury Hotel")
+    print("  2. Budget Hotel")
+    print("  3. Airbnb")
+    print("  4. Hostel\n")
+    
+    option = input("  Enter the number of your choice\n  ")
+    
+    if option == "1":
+        print("  Luxury Hotel\n"  )
+    elif option == "2":
+        print("  Budget Hotel\n"  )
+    elif option == "3":
+        print("  Airbnb\n  ")
+    elif option == "4":
+        print("  Hostel\n  ")
+    else:
+        print(colored("  Invalid choice. Please choose from the options provided,\n  ", "red"))
     
 
-      
+
+
+   
 """
 Function to display a summary over the travel information, taking
 the parameters all related to the travel info. From users input and the
@@ -194,7 +214,7 @@ def summary(user_choice, departure, travel_duration, the_city, the_price):
     table = tabulate(travel_details, tablefmt=table_style)
 
     print("  Here is your travel information: \n")
-    print(colored(table, color="yellow"))
+    print(colored(table, color="light_blue"))
 
 def main():
     """
@@ -239,6 +259,7 @@ def main():
     random_destination(user_selection)
     new_choice = another_choice()
     the_city, the_price = random_destination(user_selection)
+    accomodation = travel_package()
     summary(user_choice, departure, travel_duration, the_city, the_price)
     
 
