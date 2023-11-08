@@ -13,11 +13,11 @@ def user_input():
     The user can only enter a number starting from 1.
     """
     while True:
-        user_choice = (input("How many travelers are there? \n(1 if you are traveling alone, 2 or more for traveling with company:\n\n"))
+        user_choice = (input("  How many travelers are there? \n  (1 if you are traveling alone, 2 or more for traveling with company:\n\n  "))
         if user_choice.isdigit() and int(user_choice) > 0:
             return int(user_choice)
         else:
-            print(colored("Invalid choice. Please enter a valid number!", "red"))
+            print(colored("  Invalid choice. Please enter a valid number!", "red"))
             
 
 
@@ -28,16 +28,16 @@ def travel_date():
     Dayfirst is used to validate that the user's input is a date in the future and not in the past.
     """
     while True:
-        departure = input("When do you want to travel? (YYYY-MM-DD):\n\n")
+        departure = input("  When do you want to travel? (YYYY-MM-DD):\n\n  ")
         try:
             day_and_date = parse(departure, dayfirst=True)
             if parse(departure) >= day_and_date.today():
-                print(day_and_date.strftime("%A\n"))
+                print(day_and_date.strftime("%A"))
                 return day_and_date
             else:
-                print(colored("Please enter a valid date in YYYY-MM-DD format", "red"))
+                print(colored("  Please enter a valid date in YYYY-MM-DD format", "red"))
         except ValueError:
-            print(colored("Please enter a valid date in YYYY-MM-DD format", "red"))
+            print(colored("  Please enter a valid date in YYYY-MM-DD format", "red"))
             
     
 
@@ -48,11 +48,11 @@ def duration():
     starting from 1.
     """
     while True:
-        travel_duration = (input("How many days are you planning to stay?:\n\n"))
+        travel_duration = (input("  How many days are you planning to stay?:\n\n  "))
         if travel_duration.isdigit() and int(travel_duration) > 0:
             return int(travel_duration)
         else:
-            print(colored("Invalid input. Please enter a number!", "red"))
+            print(colored("  Invalid input. Please enter a number!", "red"))
            
 
 
@@ -106,11 +106,11 @@ def continent():
     in the random_destination function.
     """
     while True:
-        user_selection = input("Choose a continent (Africa, Asia, Europe, North America, South America): \n\n")
+        user_selection = input("  Choose a continent (Africa, Asia, Europe, North America, South America): \n\n  ")
         if user_selection in random_city_dict:
             return user_selection
         else:
-            print(colored("Invalid continent. Please choose from the continents listed", "red"))
+            print(colored("  Invalid continent. Please choose from the continents listed", "red"))
            
 
 
@@ -125,19 +125,19 @@ def random_destination(user_selection):
         the_city = random_city["City"]
         the_price = random_city["Price"]
 
-        print(f"Your Random destination is: \n\nCity: {the_city}")
-        print(f"Price: {the_price}$\n")
+        print(f"  Your Random destination is: \n\n  City: {the_city}\n  ")
+        print(f"  Price: {the_price}$\n"  )
         return the_city, the_price
     
 
 def another_choice():
-    new_choice = input("Do you want to choose another city?: (y/n)\n\n").upper()
+    new_choice = input("  Do you want to choose another city?: (y/n)\n\n  ").upper()
     if new_choice == "y":
         return continent()
     elif new_choice == "n":
         return summary()
     else:
-        print("Invalid choice. Please enter y or n")
+        print("  Invalid choice. Please enter y or n")
 
     
       
@@ -159,7 +159,7 @@ def summary(user_choice, departure, travel_duration, the_city, the_price):
     table_style = "grid"
     table = tabulate(travel_details, tablefmt=table_style)
 
-    print("Here is your travel information: \n")
+    print("  Here is your travel information: \n")
     print(colored(table, color="yellow"))
 
 def main():
@@ -179,7 +179,7 @@ def main():
             welcome = file.read()
             print(welcome)
     except FileNotFoundError:
-        print("File not found")
+        print("  File not found")
 
 
     #Ascii art file to print airplane image
@@ -188,18 +188,19 @@ def main():
     try:
         with open(airplane_file, "r") as file:
             airplane = file.read()
-            print(colored(airplane, color="magenta"))
+            print(colored(airplane, color="light_blue"))
             print("\n")
     except FileNotFoundError:
-        print("File not found")
+        print("  File not found")
         
 
 
 
 
 
-    print("Get a random travel destination based on your choice of continent\n....let's begin! \n")
-    
+    print("  Get a random travel destination based on your choice of continent.\n  Let's begin! \n")
+    input("  Press Enter to continue...\n  ")
+
     user_choice = user_input()
     departure = travel_date()
     travel_duration = duration()
