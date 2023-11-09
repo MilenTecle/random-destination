@@ -6,6 +6,9 @@ from termcolor import colored
 from pyfiglet import figlet_format
 from tabulate import tabulate
 import random
+import os
+from time import sleep
+
 
 #Lists the API:s for access
 #Code from my Love Sandwiches project
@@ -25,6 +28,7 @@ continents = SHEET.worksheet('continents')
 data = continents.get_all_values()
 
 
+
 def user_input():
     """
     Get input from user and to make sure user is making a valid 
@@ -36,7 +40,7 @@ def user_input():
         if user_choice.isdigit() and int(user_choice) > 0:
             return int(user_choice)
         else:
-            print(colored("  Invalid choice. Please enter a valid number!", "red"))
+            print(colored("  Invalid choice. Please enter a valid number", "red"))
             
 
 
@@ -54,6 +58,7 @@ def travel_date():
                 weekday = day_and_date.strftime("%A")
                 print(f"  {weekday}\n")
                 return day_and_date
+                print("\n")
             else:
                 print(colored("  Please enter a valid date in YYYY-MM-DD format", "red"))
         except ValueError:
@@ -71,8 +76,9 @@ def duration():
         travel_duration = (input("  How many days are you planning to stay?:\n\n  "))
         if travel_duration.isdigit() and int(travel_duration) > 0:
             return int(travel_duration)
+            print("\n")
         else:
-            print(colored("  Invalid input. Please enter a number!", "red"))
+            print(colored("  Invalid input. Please enter a number", "red"))
            
 
 
@@ -129,6 +135,7 @@ def continent():
         user_selection = input("  Choose a continent (Africa, Asia, Europe, North America, South America): \n\n  ")
         if user_selection in random_city_dict:
             return user_selection
+            print("\n")
         else:
             print(colored("  Invalid continent. Please choose from the continents listed", "red"))
            
@@ -145,7 +152,8 @@ def random_destination(user_selection):
         the_city = random_city["City"]
         the_price = random_city["Price"]
 
-        print(f"  Your Random destination is: \n\n  City: {the_city}")
+        print("  Your Random destination is: \n  ")
+        print(f"  City: {the_city}"  )
         print(f"  Price: {the_price}$\n"  )
         return the_city, the_price
     
@@ -158,13 +166,13 @@ def another_choice():
     If neither y och n is entered a print message will display to promt the user to make a choice.
     """
     while True:
-        new_choice = input("  Do you want to choose another city?: (y/n)\n\n  ").lower()
-        if new_choice == "y":
+        new_choice = input("  Do you want to choose another city?: (Y/N)\n\n  ").upper()
+        if new_choice == "Y":
             return continent()
-        elif new_choice == "n":
+        elif new_choice == "N":
             break
         else:
-            print("  Invalid choice. Please enter 'y' or 'n'")
+            print(colored("  Invalid choice. Please enter 'Y' or 'N'", "red"))
 
 def travel_package():
     """
@@ -173,13 +181,14 @@ def travel_package():
     a print message will display to promt the user to make a choice.
     """
     while True:
-        accomodation = input("  Do you want to add accomodation?: (y/n)\n\n  ").lower()
-        if accomodation =="y":
+        accomodation = input("  Do you want to add accomodation?: (Y/N)\n\n  ").upper()
+        if accomodation =="Y":
             return accomodation_choices()
-        elif accomodation == "n":
+            print("\n")
+        elif accomodation == "N":
             break
         else:
-            print("  Invalid choice. Please enter 'y' or 'n'")
+            print(colored("  Invalid choice. Please enter 'Y' or 'N'", "red"))
 
 
 def accomodation_choices():
@@ -204,10 +213,10 @@ def accomodation_choices():
         print("  Budget Hotel\n"  )
         return transportation_service()
     elif option == "3":
-        print("  Airbnb\n  ")
+        print("  Airbnb\n"  )
         return transportation_service()
     elif option == "4":
-        print("  Hostel\n  ")
+        print("  Hostel\n"  )
         return transportation_service()
     else:
         print(colored("  Invalid choice. Please choose from the options provided\n  ", "red"))
@@ -222,13 +231,13 @@ def transportation_service():
     a print message will display to promt the user to make a choice.
     """
     while True:
-        transportation = input("  Do you want to add transportation?: (y/n)\n\n  ").lower()
-        if transportation =="y":
+        transportation = input("  Do you want to add transportation?: (Y/N)\n\n  ").upper()
+        if transportation =="Y":
             return transportation_options()
-        elif transportation == "n":
+        elif transportation == "N":
             break
         else:
-            print("  Invalid choice. Please enter 'y' or 'n'")
+            print(colored("  Invalid choice. Please enter 'Y' or 'N'", "red"))
 
 
 def transportation_options():
@@ -272,7 +281,8 @@ def summary(user_choice, departure, travel_duration, the_city, the_price):
     table = tabulate(travel_details, tablefmt=table_style)
 
     print("  Here is your travel information: \n")
-    print(colored(table, color="light_blue"))
+    print(colored(table, color="light_yellow"))
+    print("  \n")
 
 
 def final_step():
@@ -287,9 +297,9 @@ def final_step():
         print("  Okay...let's start from the beginning!\n ")
         return main()
     elif next ==  "2":
-        print(" \n")
-        return summary()
+        print("\n")
     elif next ==  "3":
+        os.system('clear')
         print("  Have a nice trip!\n ")
     else:
         print(colored("  Invalid choice. Please choose from the options provided\n  ", "red"))
@@ -328,8 +338,9 @@ def main():
 
 
 
-    print("  Get a random travel destination based on your choice of continent.\n  Let's begin! \n")
-    input("  Press any key to continue...\n  ")
+    print("  Get a random travel destination based on your choice of continent.\n  ...Let's begin! \n")
+    sleep(2)
+    input("  Press Enter to continue...\n  ")
 
     user_choice = user_input()
     departure = travel_date()
