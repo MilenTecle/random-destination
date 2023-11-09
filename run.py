@@ -151,6 +151,12 @@ def random_destination(user_selection):
     
 
 def another_choice():
+    """
+    Get user input if user wants to get another city chosen.
+    A while loop that will display the continent function if user chooses 'y'
+    and break the loop if user chooses 'n'. Will then proceed to next function.
+    If neither y och n is entered a print message will display to promt the user to make a choice.
+    """
     while True:
         new_choice = input("  Do you want to choose another city?: (y/n)\n\n  ").lower()
         if new_choice == "y":
@@ -161,6 +167,11 @@ def another_choice():
             print("  Invalid choice. Please enter 'y' or 'n'")
 
 def travel_package():
+    """
+    Get user input if user wants to add accomodation. A while loop will run until a valid choice is made ('y' or 'n'). 
+    If 'y' the accomodation function is called. If 'n' the loop will break. If neither y och n is entered,
+    a print message will display to promt the user to make a choice.
+    """
     while True:
         accomodation = input("  Do you want to add accomodation?: (y/n)\n\n  ").lower()
         if accomodation =="y":
@@ -172,6 +183,12 @@ def travel_package():
 
 
 def accomodation_choices():
+    """
+    Prints out the choices for accomodation to the user and user can enter a number. 
+    If statements to return the correct value based on users choice. And validation if 
+    neither of the provided numbers are entered by the user. The transportation_service
+    function is then called to proceed.
+    """
     print("  Select an option for accomodation\n")
     print("  1. Luxury Hotel")
     print("  2. Budget Hotel")
@@ -182,17 +199,58 @@ def accomodation_choices():
     
     if option == "1":
         print("  Luxury Hotel\n"  )
+        transportation_service()
     elif option == "2":
         print("  Budget Hotel\n"  )
+        return transportation_service()
     elif option == "3":
         print("  Airbnb\n  ")
+        return transportation_service()
     elif option == "4":
         print("  Hostel\n  ")
+        return transportation_service()
     else:
-        print(colored("  Invalid choice. Please choose from the options provided,\n  ", "red"))
+        print(colored("  Invalid choice. Please choose from the options provided\n  ", "red"))
     
 
 
+def transportation_service():
+    """
+    Get user input if the user wished to add transportation services. 
+    A while loop will run until a valid choice is made ('y' or 'n'). If 'y' the transportation_options function is called.
+    If 'n' the loop will break. If neither y och n is entered,
+    a print message will display to promt the user to make a choice.
+    """
+    while True:
+        transportation = input("  Do you want to add transportation?: (y/n)\n\n  ").lower()
+        if transportation =="y":
+            return transportation_options()
+        elif transportation == "n":
+            break
+        else:
+            print("  Invalid choice. Please enter 'y' or 'n'")
+
+
+def transportation_options():
+    """
+    The options for transportation that will be displayed to the user. The choice will be printed out
+    and the user has to type a valid number.
+    """
+    print("  Select an option for transportation\n")
+    print("  1. Airport taxi")
+    print("  2. Car rental")
+    print("  3. Bus transfer")
+
+    selection = input("  Enter the number of your choice\n")
+
+    if selection == 1:
+        print("  Airport taxi")
+    elif selection == 2:
+        print("  Car rental")
+    elif selection == 3:
+        print("  Bus transfer")
+    else:
+        print(colored("  Invalid choice. Please choose from the options provided\n  ", "red"))
 
    
 """
