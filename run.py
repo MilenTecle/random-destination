@@ -236,19 +236,19 @@ def transportation_options():
     The options for transportation that will be displayed to the user. The choice will be printed out
     and the user has to type a valid number.
     """
-    print("  Select an option for transportation\n")
+    print("  Select an option for transportation\n  ")
     print("  1. Airport taxi")
     print("  2. Car rental")
     print("  3. Bus transfer")
 
-    selection = input("  Enter the number of your choice\n")
+    selection = input("  Enter the number of your choice\n  ")
 
-    if selection == 1:
-        print("  Airport taxi")
-    elif selection == 2:
-        print("  Car rental")
-    elif selection == 3:
-        print("  Bus transfer")
+    if selection ==  "1":
+        print("  Airport taxi\n ")
+    elif selection ==  "2":
+        print("  Car rental\n ")
+    elif selection ==  "3":
+        print("  Bus transfer\n ")
     else:
         print(colored("  Invalid choice. Please choose from the options provided\n  ", "red"))
 
@@ -273,6 +273,27 @@ def summary(user_choice, departure, travel_duration, the_city, the_price):
 
     print("  Here is your travel information: \n")
     print(colored(table, color="light_blue"))
+
+
+def final_step():
+    print("  What do you want to do next?:\n  ")
+    print("  1. Start over")
+    print("  2. Show travel details again")
+    print("  3. Exit")
+
+    next = input("  Enter the number of your choice\n  ")
+
+    if next ==  "1":
+        print("  Okay...let's start from the beginning!\n ")
+        return main()
+    elif next ==  "2":
+        print(" \n")
+        return summary()
+    elif next ==  "3":
+        print("  Have a nice trip!\n ")
+    else:
+        print(colored("  Invalid choice. Please choose from the options provided\n  ", "red"))
+
 
 def main():
     """
@@ -319,6 +340,7 @@ def main():
     the_city, the_price = random_destination(user_selection)
     accomodation = travel_package()
     summary(user_choice, departure, travel_duration, the_city, the_price)
+    exit = final_step()
     
 
    
