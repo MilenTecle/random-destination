@@ -53,8 +53,8 @@ def travel_date():
     while True:
         departure = input("  When do you want to travel? (YYYY-MM-DD):\n\n  ")
         try:
-            day_and_date = parse(departure, dayfirst=True)
-            if parse(departure) >= day_and_date.today():
+            day_and_date = datetime.strptime(departure, "%Y-%m-%d")
+            if day_and_date.date() >= datetime.now().date():
                 weekday = day_and_date.strftime("%A")
                 print(f"  {weekday}\n")
                 return day_and_date
@@ -84,14 +84,14 @@ def duration():
 
 #A dictionary of lists for each continent to return a random city to the user
 random_city_dict= {
-    "Africa": [
+    "africa": [
         {"City": "Cairo", "Price": 450}, 
         {"City": "Addis Abeba", "Price": 750}, 
         {"City": "Cape Town", "Price": 800},
         {"City": "Stone Town", "Price": 800}, 
         {"City": "Casablanca", "Price": 450}
     ],
-    "Asia": [
+    "asia": [
         {"City": "Tokyo", "Price": 750}, 
         {"City": "Manilla", "Price": 700}, 
         {"City": "Hanoi", "Price": 730}, 
@@ -99,7 +99,7 @@ random_city_dict= {
         {"City": "Seoul", "Price": 760}
 
     ],
-    "Europe": [
+    "europe": [
         {"City": "Rome", "Price": 300}, 
         {"City": "Madrid", "Price": 350}, 
         {"City": "London", "Price": 380}, 
@@ -107,7 +107,7 @@ random_city_dict= {
         {"City": "Berlin", "Price": 280}
 
     ],
-    "North America": [
+    "north america": [
         {"City": "Santo Domingo", "Price": 650}, 
         {"City": "Mexico City", "Price": 450}, 
         {"City": "New York City", "Price": 500}, 
@@ -115,7 +115,7 @@ random_city_dict= {
         {"City": "Havana", "Price": 620}
 
     ],
-    "South America": [
+    "south america": [
         {"City": "Rio de Janerio", "Price": 700}, 
         {"City": "Buenos Aires", "Price": 800}, 
         {"City": "Lima", "Price": 850}, 
@@ -132,7 +132,7 @@ def continent():
     in the random_destination function.
     """
     while True:
-        user_selection = input("  Choose a continent (Africa, Asia, Europe, North America, South America): \n\n  ")
+        user_selection = input("  Choose a continent (Africa, Asia, Europe, North America, South America): \n\n  ").lower()
         if user_selection in random_city_dict:
             return user_selection
             print("\n")
@@ -250,7 +250,7 @@ def transportation_options():
     print("  3. Bus transfer")
 
     selection = input("  Enter the number of your choice\n  ")
-    
+
     if selection ==  "1":
         print("  Airport taxi\n ")
         return("  Airport taxi\n ")
@@ -279,6 +279,10 @@ def summary(user_choice, departure, travel_duration, the_city, the_price, option
         ["Total cost:", f"${total_cost}"],
     ]
 
+    """
+    This will append the accommodation choice and transportation choice to the travel details table
+    if the user makes a choice.
+    """
     if option:
         travel_details.append(["Accommodation:", option])
 
@@ -289,8 +293,8 @@ def summary(user_choice, departure, travel_duration, the_city, the_price, option
     table_style = "grid"
     table = tabulate(travel_details, tablefmt=table_style)
 
-    print("  Here is your travel information: \n")
-    print(colored(table, color="light_yellow"))
+    print("  Here is your travel information: \n", "light_green")
+    print(table)
     print("  \n")
 
 
@@ -341,9 +345,12 @@ def main():
         print("  File not found")
         
 
-    # A welcome message followed with an input that will prompt the user to start the program
+    """
+    A welcome message followed with an input that will prompt the user to start the program. 
+    The input message will display after 1.5 seconds.
+    """
     print("  Get a random travel destination based on your choice of continent.\n  ...Let's begin! \n")
-    sleep(2)
+    sleep(1.5)
     input("  Press Enter to continue...\n  ")
 
     """
@@ -361,9 +368,7 @@ def main():
     accommodation = travel_package()
     transportation = transportation_service()
     summary(user_choice, departure, travel_duration, the_city, the_price, accommodation, transportation)
-    exit = final_step()
+    next = final_step()
     
-
-   
 
 main()
