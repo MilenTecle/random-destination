@@ -247,7 +247,7 @@ def transportation_options():
     print("  Select an option for transportation\n  ")
     print("  1. Airport taxi")
     print("  2. Car rental")
-    print("  3. Bus transfer")
+    print("  3. Bus transfer\n ")
 
     selection = input("  Enter the number of your choice\n  ")
 
@@ -293,8 +293,8 @@ def summary(user_choice, departure, travel_duration, the_city, the_price, option
     table_style = "grid"
     table = tabulate(travel_details, tablefmt=table_style)
 
-    print("  Here is your travel information: \n", "light_green")
-    print(table)
+    print("  Here is your travel information: \n"  )
+    print(colored(table, color="yellow", attrs=["reverse", "bold"]))
     print("  \n")
 
 
