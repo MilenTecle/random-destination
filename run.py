@@ -176,29 +176,28 @@ def another_choice():
 
 def travel_package():
     """
-    Get user input if user wants to add accomodation. A while loop will run until a valid choice is made ('y' or 'n'). 
-    If 'y' the accomodation function is called. If 'n' the loop will break. If neither y och n is entered,
+    Get user input if user wants to add accommodation. A while loop will run until a valid choice is made ('y' or 'n'). 
+    If 'y' the accommodation function is called. If 'n' the loop will break. If neither y och n is entered,
     a print message will display to promt the user to make a choice.
     """
     while True:
-        accomodation = input("  Do you want to add accomodation?: (Y/N)\n\n  ").upper()
-        if accomodation =="Y":
-            return accomodation_choices()
-            print("\n")
-        elif accomodation == "N":
+        accommodation = input("  Do you want to add accommodation?: (Y/N)\n\n  ").upper()
+        if accommodation =="Y":
+            return accommodation_choices()
+        elif accommodation == "N":
             break
         else:
             print(colored("  Invalid choice. Please enter 'Y' or 'N'", "red"))
 
 
-def accomodation_choices():
+def accommodation_choices():
     """
-    Prints out the choices for accomodation to the user and user can enter a number. 
+    Prints out the choices for accommodation to the user and user can enter a number. 
     If statements to return the correct value based on users choice. And validation if 
     neither of the provided numbers are entered by the user. The transportation_service
     function is then called to proceed.
     """
-    print("  Select an option for accomodation\n")
+    print("  Select an option for accommodation\n")
     print("  1. Luxury Hotel")
     print("  2. Budget Hotel")
     print("  3. Airbnb")
@@ -208,16 +207,16 @@ def accomodation_choices():
     
     if option == "1":
         print("  Luxury Hotel\n"  )
-        transportation_service()
+        return ("  Luxury Hotel\n")
     elif option == "2":
         print("  Budget Hotel\n"  )
-        return transportation_service()
+        return("  Budget Hotel\n"  )
     elif option == "3":
         print("  Airbnb\n"  )
-        return transportation_service()
+        return ("  Airbnb\n"  )
     elif option == "4":
         print("  Hostel\n"  )
-        return transportation_service()
+        return ("  Hostel\n"  )
     else:
         print(colored("  Invalid choice. Please choose from the options provided\n  ", "red"))
     
@@ -251,13 +250,16 @@ def transportation_options():
     print("  3. Bus transfer")
 
     selection = input("  Enter the number of your choice\n  ")
-
+    
     if selection ==  "1":
         print("  Airport taxi\n ")
+        return("  Airport taxi\n ")
     elif selection ==  "2":
         print("  Car rental\n ")
+        return ("  Car rental\n ")
     elif selection ==  "3":
         print("  Bus transfer\n ")
+        return("  Bus transfer\n ")
     else:
         print(colored("  Invalid choice. Please choose from the options provided\n  ", "red"))
 
@@ -267,7 +269,7 @@ Function to display a summary over the travel information, taking
 the parameters all related to the travel info. From users input and the
 random city generated. The summary will be displayed in a table using the tabulate module
 """
-def summary(user_choice, departure, travel_duration, the_city, the_price):
+def summary(user_choice, departure, travel_duration, the_city, the_price, option, selection):
     total_cost = user_choice * the_price
     travel_details = [
         ["Traveling on:", departure],
@@ -276,7 +278,14 @@ def summary(user_choice, departure, travel_duration, the_city, the_price):
         ["Destination:", the_city],
         ["Total cost:", f"${total_cost}"],
     ]
+
+    if option:
+        travel_details.append(["Accommodation:", option])
+
+    if selection:
+        travel_details.append(["Transportation:", selection])
     
+    #Displays the travel details in a table
     table_style = "grid"
     table = tabulate(travel_details, tablefmt=table_style)
 
@@ -285,11 +294,15 @@ def summary(user_choice, departure, travel_duration, the_city, the_price):
     print("  \n")
 
 
+
 def final_step():
+    """
+    Let's the user choose to start over or exit the program. If the user want to start over, the main function is called.
+    If the user wants to exit the terminal is cleared and a print message is displayed.
+    """
     print("  What do you want to do next?:\n  ")
     print("  1. Start over")
-    print("  2. Show travel details again")
-    print("  3. Exit")
+    print("  2. Exit")
 
     next = input("  Enter the number of your choice\n  ")
 
@@ -297,8 +310,6 @@ def final_step():
         print("  Okay...let's start from the beginning!\n ")
         return main()
     elif next ==  "2":
-        print("\n")
-    elif next ==  "3":
         os.system('clear')
         print("  Have a nice trip!\n ")
     else:
@@ -307,15 +318,11 @@ def final_step():
 
 def main():
     """
-    #Change the welcomes text font color and text to ascii art
-    welcome = "Welcome"
-    text = "to the Random Destination Generator!\n\n"
-    print(colored(figlet_format(welcome, font="doom"), color="light_blue"))
-    print(colored(text, "light_blue"))
-"""
-    
-    #Ascii art file to print images
-
+    Ascii art files do display the welcome text and the airplane.
+    The files are openend and read, and if there is an error a print message will be displayed
+    in the exception.
+    """
+    #Ascii art files to print images
     welcome_text = "welcome.txt"
     airplane_file = "airplane.txt"
 
@@ -334,13 +341,15 @@ def main():
         print("  File not found")
         
 
-
-
-
-
+    # A welcome message followed with an input that will prompt the user to start the program
     print("  Get a random travel destination based on your choice of continent.\n  ...Let's begin! \n")
     sleep(2)
     input("  Press Enter to continue...\n  ")
+
+    """
+    The functions below are called in the right order to display information to the user
+    and get the input from the user
+    """
 
     user_choice = user_input()
     departure = travel_date()
@@ -349,8 +358,9 @@ def main():
     random_destination(user_selection)
     new_choice = another_choice()
     the_city, the_price = random_destination(user_selection)
-    accomodation = travel_package()
-    summary(user_choice, departure, travel_duration, the_city, the_price)
+    accommodation = travel_package()
+    transportation = transportation_service()
+    summary(user_choice, departure, travel_duration, the_city, the_price, accommodation, transportation)
     exit = final_step()
     
 
