@@ -158,7 +158,7 @@ def random_destination(user_selection):
         return the_city, the_price
     
 
-def another_choice():
+def another_choice(user_selection):
     """
     Get user input if user wants to get another city chosen.
     A while loop that will display the continent function if user chooses 'y'
@@ -168,7 +168,8 @@ def another_choice():
     while True:
         new_choice = input("  Do you want to choose another city?: (Y/N)\n\n  ").upper()
         if new_choice == "Y":
-            return continent()
+            user_selection = continent()
+            the_city, the_price = random_destination(user_selection)
         elif new_choice == "N":
             break
         else:
@@ -219,6 +220,8 @@ def accommodation_choices():
         return ("  Hostel\n"  )
     else:
         print(colored("  Invalid choice. Please choose from the options provided\n  ", "red"))
+        sleep(2)
+        return accommodation_choices()
     
 
 
@@ -262,7 +265,9 @@ def transportation_options():
         return("  Bus transfer\n ")
     else:
         print(colored("  Invalid choice. Please choose from the options provided\n  ", "red"))
-
+        sleep(2)
+        return transportation_options()
+        
    
 """
 Function to display a summary over the travel information, taking
@@ -288,7 +293,8 @@ def summary(user_choice, departure, travel_duration, the_city, the_price, option
 
     if selection:
         travel_details.append(["Transportation:", selection])
-    
+
+
     #Displays the travel details in a table
     table_style = "grid"
     table = tabulate(travel_details, tablefmt=table_style)
@@ -362,9 +368,8 @@ def main():
     departure = travel_date()
     travel_duration = duration()
     user_selection = continent()
-    random_destination(user_selection)
-    new_choice = another_choice()
     the_city, the_price = random_destination(user_selection)
+    new_choice = another_choice(user_selection)
     accommodation = travel_package()
     transportation = transportation_service()
     summary(user_choice, departure, travel_duration, the_city, the_price, accommodation, transportation)
