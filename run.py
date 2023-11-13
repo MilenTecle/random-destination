@@ -41,9 +41,9 @@ def user_input():
 
 def travel_date():
     """
-    Get input from the user about travel date. A while loop that will repeat until a valid date is entered.
-    The parse method is used to validate the date format.
-    Dayfirst is used to validate that the user's input is a date in the future and not in the past.
+    Get input from the user about travel date. A while loop that will repeat until a valid date format is entered.
+    The datetime.strptime will parse the date. By using datetime.now.date it will then check and validate that the user's 
+    input is a date in the future and not in the past.
     """
     while True:
         departure = input("  When do you want to travel? (YYYY-MM-DD):\n\n  ")
@@ -88,7 +88,7 @@ def continent():
             SHEET.worksheet(user_selection)
             return user_selection
             print("\n")
-        except Exception as e:
+        except gspread.exceptions.WorksheetNotFound:
             print(colored("  Invalid continent. Please choose from the continents listed", "red"))
            
 
@@ -111,7 +111,7 @@ def random_destination(user_selection):
         print(f"  City: {the_city}"  )
         print(f"  Price: {the_price}$\n"  )
         return the_city, the_price
-    except Exception as e:
+    except gspread.exceptions.WorksheetNotFound:
         print("No city found")
     
 
