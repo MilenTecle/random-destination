@@ -23,11 +23,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('random-destination')
 
-continents = SHEET.worksheet('continents')
-
-data = continents.get_all_values()
-
-
 
 def user_input():
     """
@@ -81,62 +76,19 @@ def duration():
             print(colored("  Invalid input. Please enter a number", "red"))
            
 
-
-#A dictionary of lists for each continent to return a random city to the user
-random_city_dict= {
-    "africa": [
-        {"City": "Cairo", "Price": 450}, 
-        {"City": "Addis Abeba", "Price": 750}, 
-        {"City": "Cape Town", "Price": 800},
-        {"City": "Stone Town", "Price": 800}, 
-        {"City": "Casablanca", "Price": 450}
-    ],
-    "asia": [
-        {"City": "Tokyo", "Price": 750}, 
-        {"City": "Manilla", "Price": 700}, 
-        {"City": "Hanoi", "Price": 730}, 
-        {"City": "Singapore", "Price": 680}, 
-        {"City": "Seoul", "Price": 760}
-
-    ],
-    "europe": [
-        {"City": "Rome", "Price": 300}, 
-        {"City": "Madrid", "Price": 350}, 
-        {"City": "London", "Price": 380}, 
-        {"City": "Athens", "Price": 400}, 
-        {"City": "Berlin", "Price": 280}
-
-    ],
-    "north america": [
-        {"City": "Santo Domingo", "Price": 650}, 
-        {"City": "Mexico City", "Price": 450}, 
-        {"City": "New York City", "Price": 500}, 
-        {"City": "Calgary", "Price": 580}, 
-        {"City": "Havana", "Price": 620}
-
-    ],
-    "south america": [
-        {"City": "Rio de Janerio", "Price": 700}, 
-        {"City": "Buenos Aires", "Price": 800}, 
-        {"City": "Lima", "Price": 850}, 
-        {"City": "Bogotá", "Price": 750}, 
-        {"City": "Caracas", "Price": 780},
-    ]
-}
-
-
-
 def continent():
     """
     Get user input. User needs to select a contintent to get a random city returned
-    in the random_destination function.
+    in the random_destination function. The continents are each linked to a city and price in
+    google sheets. Here it will access the worksheet for the chosen continent.
     """
     while True:
         user_selection = input("  Choose a continent (Africa, Asia, Europe, North America, South America): \n\n  ").lower()
-        if user_selection in random_city_dict:
+        try:
+            SHEET.worksheet(user_selection)
             return user_selection
             print("\n")
-        else:
+        except Exception as e:
             print(colored("  Invalid continent. Please choose from the continents listed", "red"))
            
 
@@ -144,11 +96,14 @@ def continent():
 
 def random_destination(user_selection):
     """
-    Returns a random city and the price from the dictionary to the user. Based on the user input in the 
-    continent function.
+    Returns a random city and the price from the the list of citys from the google worksheet to the user.
+    Based on the user input in the continent function it will access the worksheet. It will then get all the rows from
+    the worksheet, choose a random city and print the random city and price.
     """
-    if user_selection in random_city_dict:
-        random_city = random.choice(random_city_dict[user_selection])
+    try: 
+        worksheet = SHEET.worksheet(user_selection)
+        data = worksheet.get_all_records()
+        random_city = random.choice(data)
         the_city = random_city["City"]
         the_price = random_city["Price"]
 
@@ -156,6 +111,8 @@ def random_destination(user_selection):
         print(f"  City: {the_city}"  )
         print(f"  Price: {the_price}$\n"  )
         return the_city, the_price
+    except Exception as e:
+        print("No city found")
     
 
 def another_choice(user_selection):
