@@ -144,6 +144,7 @@ def another_choice(user_selection):
         if new_choice == "Y":
             user_selection = continent()
             the_city, the_price = random_destination(user_selection)
+            return the_city, the_price
         elif new_choice == "N":
             break
         else:
@@ -357,7 +358,7 @@ def main():
     travel_duration = duration()
     user_selection = continent()
     the_city, the_price = random_destination(user_selection)
-    new_choice = another_choice(user_selection)
+    the_city, the_price = another_choice(user_selection)
     accommodation = travel_package()
     transportation = transportation_service()
     summary(user_choice, departure, travel_duration, the_city, the_price,
