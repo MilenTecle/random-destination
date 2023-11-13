@@ -1,6 +1,6 @@
 # The Random Destination Generator
 
-The random destination application is...
+The Random Destination is an interactieve text-based application. 
 
 ## Contents
 
@@ -66,7 +66,7 @@ The random destination application is...
 
 
 ## Flowchart
-The flowchart was produced via Lucid.
+The flowchart was produced via Lucid charts.
 
 
 ## Features
@@ -93,13 +93,10 @@ The flowchart was produced via Lucid.
 
   ## Frameworks, Libraries and Programs
    - [Am I Responsive](https://ui.dev/amiresponsive) - Was used to ensure that the website is responsive on diffrerent devices.
-   - [Balsamiq](https://balsamiq.com/) - Was used to create the wireframes before starting the project.
-   - [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) - Was used on a daily basis throughout the project to make changes and to test the responsivness.
-   - [Font Awesome](https://fontawesome.com/) - Was used for Social Media icons in footer and for Contact information on the contact page.
    - [Gitpod](https://gitpod.io/) - Was the Codespace used for this project.
    - [Git](https://git-scm.com/) - Git was used for version control by using the Gitpod terminal to commit and then push to Github.
    - [Github](https://github.com/) - Is where the projects code is stored after being pushed. 
-   - [Google Fonts](https://fonts.google.com/) - Was used to import fonts to the page.
+   - [Heroku]
    - [Responsinator](http://www.responsinator.com/) - Was also used to ensure that the website is responsive on diffrerent devices.
 
 ## Known bugs
