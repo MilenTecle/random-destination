@@ -10,11 +10,10 @@ import os
 from time import sleep
 from PIL import Image
 
-"""
-image_file = 'image.jpg'
-image = Image.open(image_file)
+
+image = Image.open('image.jpg')
 image.show()
-"""
+
 
 # Lists the API:s for access
 # Code from my Love Sandwiches project
@@ -274,7 +273,7 @@ def summary(user_choice, departure, travel_duration, the_city, the_price,
     departure, weekday = departure
 
     travel_details = [
-        ["Traveling on:", f"{weekday}, {departure.strftime("%Y-%m-%d")}"],
+        ["Traveling on:", f'{weekday}, {departure.strftime('%Y-%m-%d')}'],
         ["Number of people traveling:", user_choice],
         ["Duration of stay:", f"{travel_duration} days"],
         ["Destination:", the_city],
@@ -368,6 +367,8 @@ def main():
     user_selection = continent()
     the_city, the_price = random_destination(user_selection)
     another_choice_input = another_choice(user_selection)
+    # Prevents a NoneType error when the user chooses no in the another_choice
+    # function that returns None
     if another_choice_input is not None:
         the_city, the_price = another_choice_input
     new_choice = another_choice(user_selection)
