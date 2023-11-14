@@ -58,7 +58,7 @@ def travel_date():
             if day_and_date.date() >= datetime.now().date():
                 weekday = day_and_date.strftime("%A")
                 print(f"  {weekday}\n")
-                return day_and_date
+                return day_and_date, weekday
                 print("\n")
             else:
                 print(colored(
@@ -263,9 +263,12 @@ tabulate module.
 
 def summary(user_choice, departure, travel_duration, the_city, the_price,
             option, selection):
+
     total_cost = user_choice * the_price
+    departure, weekday = departure
+
     travel_details = [
-        ["Traveling on:", departure],
+        ["Traveling on:", f"{weekday}, {departure.strftime("%Y-%m-%d")}"],
         ["Number of people traveling:", user_choice],
         ["Duration of stay:", f"{travel_duration} days"],
         ["Destination:", the_city],
@@ -358,7 +361,8 @@ def main():
     travel_duration = duration()
     user_selection = continent()
     the_city, the_price = random_destination(user_selection)
-    the_city, the_price = another_choice(user_selection)
+    # the_city, the_price = another_choice(user_selection)
+    new_choice = another_choice(user_selection)
     accommodation = travel_package()
     transportation = transportation_service()
     summary(user_choice, departure, travel_duration, the_city, the_price,
