@@ -8,10 +8,11 @@ from tabulate import tabulate
 import random
 import os
 from time import sleep
-from PIL import image
+from PIL import Image
 
 """
-image = Image.open('image.jpg')
+image_file = 'image.jpg'
+image = Image.open(image_file)
 image.show()
 """
 
@@ -151,7 +152,7 @@ def another_choice(user_selection):
             the_city, the_price = random_destination(user_selection)
             return the_city, the_price
         elif new_choice == "N":
-            break
+            return None
         else:
             print(colored("  Invalid choice. Please enter 'Y' or 'N'", "red"))
 
@@ -366,7 +367,9 @@ def main():
     travel_duration = duration()
     user_selection = continent()
     the_city, the_price = random_destination(user_selection)
-    # the_city, the_price = another_choice(user_selection)
+    another_choice_input = another_choice(user_selection)
+    if another_choice_input is not None:
+        the_city, the_price = another_choice_input
     new_choice = another_choice(user_selection)
     accommodation = travel_package()
     transportation = transportation_service()
