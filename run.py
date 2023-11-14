@@ -8,7 +8,12 @@ from tabulate import tabulate
 import random
 import os
 from time import sleep
+from PIL import image
 
+"""
+image = Image.open('image.jpg')
+image.show()
+"""
 
 # Lists the API:s for access
 # Code from my Love Sandwiches project
