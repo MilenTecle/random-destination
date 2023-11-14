@@ -273,7 +273,7 @@ def summary(user_choice, departure, travel_duration, the_city, the_price,
     departure, weekday = departure
 
     travel_details = [
-        ["Traveling on:", f'{weekday}, {departure.strftime('%Y-%m-%d')}'],
+        ["Traveling on:", f'{weekday}, {departure.strftime("%Y-%m-%d")}'],
         ["Number of people traveling:", user_choice],
         ["Duration of stay:", f"{travel_duration} days"],
         ["Destination:", the_city],
