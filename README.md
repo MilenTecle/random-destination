@@ -89,12 +89,39 @@ The flowchart was produced via Lucid charts.
 
 
 
-- ### The Start Page
-  -
+- ### The Landing Page
+- Welcome text and image of airplane using ASCII
 
+  ![Logo](images/readme-images/logo.PNG)
+
+
+- Introductury text with instructions to proceed
+
+  ![Introduction](images/readme-images/introduction.PNG)
 
 - ### The Application
-  -
+  - User input for travel details on
+      1. How many travelers there. The user needs to type a number, starting from 1. Otherwhise invalid choice will display.
+
+      ![Number of travelers](images/readme-images/invalid-choice-travelers.PNG)
+
+      2. When do the user want to travel. The date format needs to be exactly the same and a future date. Otherwise invalid date in the right format will display.
+
+      ![Date format](images/readme-images/date-format.PNG)
+
+      3. How many days is the user planning on staying. The input needs to be a number, otherwise invalid choice will display.
+
+      ![Number of days](images/readme-images/number-of-days.PNG)
+
+      4. The user can choose a continent
+
+
+      4. A random city and price will be presented based on users choice of continent. The data is retrieved from a google spreadsheet connected with API key.
+      5. An option to choose another city.
+      6. Question if the user wants to add accommodation. If yes, the user is presented with four options and selection is made by typing in a number between 1-4.
+      7. Question if the user wants to add transportation. If yes, the user is presentened with three options and selection is made by typing in a number betweeen 1-3.
+      8. The travels details are then presentend in a table for the user.
+      9. The final step is to choose the next step.
 
 
 ### Features left to implement
@@ -211,43 +238,43 @@ The live link can be found here - [The Random Destination Generator](https://ran
 ### Code
 1. This guide was used for overall understanding of Python:
     - https://docs.python.org/3/library/
-1. I used these guides to understand how to use datetime and how to validate the date and the date format:
+2. I used these guides to understand how to use datetime and how to validate the date and the date format:
     - https://www.datacamp.com/tutorial/converting-strings-datetime-objects
     - https://www.tutorialspoint.com/How-to-do-date-validation-in-Python
     - https://www.w3schools.com/python/python_datetime.asp
     - https://stackoverflow.com/questions/74091035/how-do-i-validate-a-date-format-with-python
 
-2. With the help of the guides above and the following I could also understand how to get the weekday of the users input date:
+3. With the help of the guides above and the following I could also understand how to get the weekday of the users input date:
     - https://pynative.com/python-get-the-day-of-week/
 
-3. I used this code to get a random choice of a city generated to the user:
+4. I used this code to get a random choice of a city generated to the user:
     - https://pynative.com/python-random-choice/
 
-4. I used the steps and code from the Love Sandwich project to get the google spreadsheet connected. Additionally I used this guide:
+5. I used the steps and code from the Love Sandwich project to get the google spreadsheet connected. Additionally I used this guide:
    - https://data-flair.training/blogs/read-data-from-google-sheets-using-python/
   and some code from here:
     - https://aryanirani123.medium.com/read-and-write-data-in-google-sheets-using-python-and-the-google-sheets-api-6e206a242f20
     - https://www.jayasekara.blog/2021/07/accessing-google-spreadsheet-data-using-python.html?m=1
 
-5. I used this guide to implement the correct exception for Gspread data:
+6. I used this guide to implement the correct exception for Gspread data:
     - https://docs.gspread.org/en/latest/api/exceptions.html
 
-6. I used this guide to get the travel details table printed with reversed background and with bold text:
+7. I used this guide to get the travel details table printed with reversed background and with bold text:
     - https://pypi.org/project/termcolor/0.2/
     - https://www.stechies.com/print-colored-text-python/
 
-7. I used these guide on how to print a table using the tabulate module:
+8. I used these guide on how to print a table using the tabulate module:
     - https://pypi.org/project/tabulate/
     - https://www.stechies.com/create-table-python/
 
-8. I used this guide to understand how to append transportation and accommodation to travel details:
+9. I used this guide to understand how to append transportation and accommodation to travel details:
     - https://docs.python.org/3/tutorial/datastructures.html
 
-9. I used my notes from the section "Reading Data from a file" and "Try and Except Statements" in the LMS to understand how to read the files in the main function.
+10. I used my notes from the section "Reading Data from a file" and "Try and Except Statements" in the LMS to understand how to read the files in the main function.
 
-10. Not none
-
-
+11. I struggled a bit to get the updated city and price from the another_choice function. This helped me understand and fix the issue:
+    - https://rollbar.com/blog/python-typeerror-nonetype-object-is-not-iterable/
+    - https://stackoverflow.com/questions/75577437/typeerror-cannot-unpack-non-iterable-nonetype-object-not-sure-where-it-is-comi
 
 
 
