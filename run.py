@@ -1,12 +1,10 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from dateutil.parser import parse
 from datetime import datetime
 from termcolor import colored
 from pyfiglet import figlet_format
 from tabulate import tabulate
 import random
-import os
 from time import sleep
 from PIL import Image
 
