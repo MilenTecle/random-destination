@@ -5,12 +5,9 @@ from termcolor import colored
 from pyfiglet import figlet_format
 from tabulate import tabulate
 import random
+import os
 from time import sleep
-from PIL import Image
 
-
-image = Image.open('image.jpg')
-image.show()
 
 
 # Lists the API:s for access
@@ -127,10 +124,10 @@ def random_destination(user_selection):
 
         print("  Your Random destination is: \n  ")
         print(f"  City: {the_city}")
-        print(f"  Price: {the_price}$\n")
+        print(f"  Price: ${the_price}\n")
         return the_city, the_price
     except gspread.exceptions.WorksheetNotFound:
-        print("No city found")
+        print("No data found")
 
 
 def another_choice(user_selection):
@@ -369,7 +366,6 @@ def main():
     # function that returns None
     if another_choice_input is not None:
         the_city, the_price = another_choice_input
-    new_choice = another_choice(user_selection)
     accommodation = travel_package()
     transportation = transportation_service()
     summary(user_choice, departure, travel_duration, the_city, the_price,
