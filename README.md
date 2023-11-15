@@ -100,28 +100,52 @@ The flowchart was produced via Lucid charts.
   ![Introduction](images/readme-images/introduction.PNG)
 
 - ### The Application
-  - User input for travel details on
-      1. How many travelers there. The user needs to type a number, starting from 1. Otherwhise invalid choice will display.
+- User input for travel details on:
+1. How many travelers are there. The user needs to type a number, starting from 1. Otherwhise invalid choice will display.
 
-      ![Number of travelers](images/readme-images/invalid-choice-travelers.PNG)
+    ![Number of travelers](images/readme-images/invalid-choice-travelers.PNG)
 
-      2. When do the user want to travel. The date format needs to be exactly the same and a future date. Otherwise invalid date in the right format will display.
+2. When do the user want to travel. The date format needs to be exactly the same and a future date. Otherwise invalid date in the right format will display.
 
-      ![Date format](images/readme-images/date-format.PNG)
+    ![Date format](images/readme-images/date-format.PNG)
 
-      3. How many days is the user planning on staying. The input needs to be a number, otherwise invalid choice will display.
+3. How many days is the user planning on staying. The input needs to be a number, otherwise invalid choice will display.
 
-      ![Number of days](images/readme-images/number-of-days.PNG)
+    ![Number of days](images/readme-images/number-of-days.PNG)
 
-      4. The user can choose a continent
+4. The user can choose a continent from the continents listed. If the user type something rather than the contintens listed, invalid continent will display.
+
+5. A random city and price will be presented based on users choice of continent. The data is retrieved from a google spreadsheet connected with API key.
+
+    ![Continent choice and random city](images/readme-images/choose-continent.PNG)
+
+6. The continents in the Google spreadsheet are each linked to a worksheet by continent name, where the citys along with the price are listed. When the user chooses a continent it will then randomize a city from the relevant worksheet.
+
+    ![Google spreadsheeet](images/readme-images/google-spreadsheet.PNG)
 
 
-      4. A random city and price will be presented based on users choice of continent. The data is retrieved from a google spreadsheet connected with API key.
-      5. An option to choose another city.
-      6. Question if the user wants to add accommodation. If yes, the user is presented with four options and selection is made by typing in a number between 1-4.
-      7. Question if the user wants to add transportation. If yes, the user is presentened with three options and selection is made by typing in a number betweeen 1-3.
-      8. The travels details are then presentend in a table for the user.
-      9. The final step is to choose the next step.
+7. An option to choose another city. The user needs to type y or n. If not invalid choice will display.
+
+    ![Another city choice](images/readme-images/another-city.PNG)
+
+8. Question if the user wants to add accommodation. If yes, the user is presented with four options and selection is made by typing in a number between 1-4. If not, invalid choice will dispaly. If user chooses no next question will display.
+
+    ![Add accommodation](images/readme-images/add-accommodation.PNG)
+
+
+9. Question if the user wants to add transportation. If yes, the user is presented with three options and selection is made by typing in a number betweeen 1-3. If not, invalid choice will display. If user chooses no, the travel summary will be displayed.
+
+    ![Add transportation](images/readme-images/add-transportation.PNG)
+
+
+10. The travels details are then presentend in a table for the user. If the user didn't choose to add transportation or accomodation, it will not be included in the travel summary. If the user chooses another city, it will display the new random city in the summary.
+
+    ![Travel summary](images/readme-images/travel-summary.PNG)
+
+11. The final step is to choose wether to start over or exit the program. If the user chooses to 1. Start over, the program will start all over. If the user chooses 2. Exit, the progam will clear the terminal and print a message.
+
+    ![Final step](images/readme-images/final-step.PNG)
+    ![Exit](images/readme-images/exit.PNG)
 
 
 ### Features left to implement
@@ -176,8 +200,7 @@ No known bugs.
 
 
 ### Application Testing
-
-
+- The application was tested multiple times. All the input fields and logic has been tested properly to make sure that the user can't type other than valid input in the input fields. If the data is not valid, a relevant print message will be displayed to the user, which also have been tested properly.
 
 
 ### Browser Testing
@@ -293,6 +316,6 @@ The content were written by the developer.
 
 
 ### Acknowledgements
-- Antonio, my mentor, for guiding med throughout the project with important suggestions to improve the quiz and funcionality.
+- Antonio, my mentor, for guiding med throughout the project with important suggestions to improve the application and logic.
 - To my husband and family, for all the support and patience throughout this project.
 
