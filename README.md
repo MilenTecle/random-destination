@@ -5,6 +5,7 @@ the oppurtunity to design their travel plans in a unique and entertaining way. T
 
 The live link can be found here - [The Random Destination Generator](https://random-destination-generator-3e9ef050a262.herokuapp.com/)
 
+![Random Destination Am I Responsive Image](images/readme-images/am-i-responsive.PNG)
 
 ## Contents
 

@@ -8,7 +8,6 @@ import os
 from time import sleep
 
 
-
 # Lists the API:s for access
 # Code from my Love Sandwiches project
 
@@ -35,7 +34,7 @@ def user_input():
         user_choice = (input("  How many travelers are there?: \n  "
                              "(1 if you are traveling alone, 2 or"
                              " more for traveling with company)\n\n  "))
-        if user_choice.isdigit() and int(user_choice) > 0 and int(user_choice) <= 15:
+        if user_choice.isdigit() and 0 < int(user_choice) <= 15:
             return int(user_choice)
         else:
             print(colored(
@@ -77,7 +76,7 @@ def duration():
     while True:
         travel_duration = (input("  How many days are you planning"
                                  " to stay?:\n\n  "))
-        if travel_duration.isdigit() and int(travel_duration) > 0 and int(travel_duration) <= 90:
+        if travel_duration.isdigit() and 0 < int(travel_duration) <= 90:
             return int(travel_duration)
             print("\n")
         else:
@@ -259,6 +258,7 @@ random city generated. The summary will be displayed in a table using the
 tabulate module.
 """
 
+
 def summary(user_choice, departure, travel_duration, the_city, the_price,
             option, selection):
     """
@@ -318,8 +318,8 @@ def final_step():
             break
         else:
             print(colored(
-            "  Invalid choice. Please choose from the options"
-            " provided\n  ", "red"))
+                "  Invalid choice. Please choose from the options"
+                " provided\n  ", "red"))
 
 
 def main():
@@ -378,3 +378,4 @@ def main():
 
 
 main()
+
