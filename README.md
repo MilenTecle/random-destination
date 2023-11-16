@@ -1,7 +1,7 @@
 # The Random Destination Generator
 
-The Random Destination Generator is an interactive text-based application, that will let the user travel plan in fun a creative way. The application
-provides the user with a randomized city based on continent preference.
+The Random Destination Generator is an engaging, text-based application that will add creativity to travel planning. The application is interactive, giving the user
+the oppurtunity to design their travel plans in a unique and entertaining way. The users select their prefered contintent and the application generates a randomized city, giving the user a surprise destination.
 
 The live link can be found here - [The Random Destination Generator](https://random-destination-generator-3e9ef050a262.herokuapp.com/)
 
@@ -12,11 +12,11 @@ The live link can be found here - [The Random Destination Generator](https://ran
 - [Site Owner Goals](#site-owner-goals)
 - [User Stories](#user-stories)
   - [First time user](#first-time-user)
+  - [Returning user](#returning-user)
 
 - [Design](#design)
   - [Images](#images)
   - [Colours](#colours)
-  - [Fonts](#fonts)
   - [Flowchart](#flowchart)
 
 - [Features](#features)
@@ -31,7 +31,9 @@ The live link can be found here - [The Random Destination Generator](https://ran
 - [Testing](#testing)
 
 - [Validator Testing](#validator-testing)
+  - [Python](#python)
   - [Accessibility](#accessibility)
+- [Application testing](#application-testing)
 - [Browser Testing](#browser-testing)
 - [User Stories Testing](#user-stories-testing)
 - [Friends and Family](#friends-and-family)
@@ -48,7 +50,7 @@ The live link can be found here - [The Random Destination Generator](https://ran
 
  ## Site Owner Goals
 
-The Random Destination Generator is an application designed to simplify travel planning. To discover new travel destinations and to inspire spontaneus solo adventures or with a group of friends.
+The Random Destination Generator is an application designed to simplify travel planning. To discover new travel destinations and to inspire spontaneus solo adventures or with a group of friends and family.
 
 
 
@@ -57,7 +59,7 @@ The Random Destination Generator is an application designed to simplify travel p
   - As a first time user I want to understand the purpose of the application easily.
   - As a first time user I want a simple and intuitive interface for my travel inputs.
   - As a first time user I want clear instructions and guidance should I enter a wrongful input.
-  - As a first time user I want the application to provide me with a random destination based on my preference.
+  - As a first time user I want the application to provide me with a random destination based on my prefered continent.
   - As a first time user I want the option to add accommodation and transportation to help me plan my entire trip.
   - As a first time user I want the option to re-choose a city if that is not what I expected.
   - As a first time user I want the option to see the travel details displayed in a summary after I have made all my choices.
@@ -73,10 +75,11 @@ The Random Destination Generator is an application designed to simplify travel p
 ## Design
 
 ### Images
-ASCII images are used to further enhance the purpose and to make the first look appealing to the user.
+- The background image is inviting and reflects the purpose of the application.
+- ASCII images are used to further enhance the purpose and to make the first look appealing to the user.
 
 ### Colours
-The colours are imported from termcolor. Red colour is used when input is invalid for clarity to the user. The travel details summary is in yellow to add a contrast.
+The colours are imported from termcolor. Red colour is used when input is invalid for clarity to the user. The travel details summary is in yellow to add a contrast and a nice touch.
 
 
 ## Flowchart
@@ -100,8 +103,8 @@ The flowchart was produced via Lucid charts.
   ![Introduction](images/readme-images/introduction.PNG)
 
 - ### The Application
-- User input for travel details on:
-1. How many travelers are there. The user needs to type a number, starting from 1. Otherwhise invalid choice will display.
+
+1. How many travelers are there. The user needs to type a number, starting from 1, with a limitation of 15 travelers. Otherwhise invalid choice will display.
 
     ![Number of travelers](images/readme-images/invalid-choice-travelers.PNG)
 
@@ -109,13 +112,13 @@ The flowchart was produced via Lucid charts.
 
     ![Date format](images/readme-images/date-format.PNG)
 
-3. How many days is the user planning on staying. The input needs to be a number, otherwise invalid choice will display.
+3. How many days is the user planning on staying. The input needs to be a number starting on 1, with a limitation of 90 days. Otherwise invalid choice will display.
 
     ![Number of days](images/readme-images/number-of-days.PNG)
 
 4. The user can choose a continent from the continents listed. If the user type something rather than the contintens listed, invalid continent will display.
 
-5. A random city and price will be presented based on users choice of continent. The data is retrieved from a google spreadsheet connected with API key.
+5. A random city and price will be presented based on users choice of continent. The data is retrieved from a spreadsheet using Google Sheets API.
 
     ![Continent choice and random city](images/readme-images/choose-continent.PNG)
 
@@ -128,7 +131,7 @@ The flowchart was produced via Lucid charts.
 
     ![Another city choice](images/readme-images/another-city.PNG)
 
-8. Question if the user wants to add accommodation. If yes, the user is presented with four options and selection is made by typing in a number between 1-4. If not, invalid choice will dispaly. If user chooses no next question will display.
+8. Question if the user wants to add accommodation. If yes, the user is presented with four options and selection is made by typing in a number between 1-4. If not, invalid choice will dispaly. If user chooses no, next question will display.
 
     ![Add accommodation](images/readme-images/add-accommodation.PNG)
 
@@ -142,16 +145,16 @@ The flowchart was produced via Lucid charts.
 
     ![Travel summary](images/readme-images/travel-summary.PNG)
 
-11. The final step is to choose wether to start over or exit the program. If the user chooses to 1. Start over, the program will start all over. If the user chooses 2. Exit, the progam will clear the terminal and print a message.
+11. The final step is to choose wether to start over or exit the program. If the user chooses to 1. Start over, the program will start all over. If the user chooses 2. Exit, the progam will clear the terminal and print a message. The user needs to choose 1 or 2, if not invalid choice will display.
 
     ![Final step](images/readme-images/final-step.PNG)
     ![Exit](images/readme-images/exit.PNG)
 
 
 ### Features left to implement
-  - Export the travel details to a pdf for the user to keep.
-  - Extend the options for accommodation to actual names of hotels and hostels stored in the google spreadsheet.
-  - Extend the options for transportation to car rental companies and different types of bus transfer stored in the google spreadsheet.
+  - Export the travel details to a pdf for the user to save.
+  - Extend the options for accommodation to actual names of hotels and hostels with a price stored in the google spreadsheet.
+  - Extend the options for transportation to car rental companies and different types of bus transfer with a price stored in the google spreadsheet.
 
 
 ## Technologies used
@@ -165,6 +168,8 @@ The flowchart was produced via Lucid charts.
    - [Git](https://git-scm.com/) - Git was used for version control by using the Gitpod terminal to commit and then push to Github.
    - [Github](https://github.com/) - Is where the projects code is stored after being pushed.
    - [Heroku](https://www.heroku.com/auth/login) - The application was deployed to Heroku.
+   - [Lucidchart](https://www.lucidchart.com/pages/examples/flowchart-maker) - Was used to create the flowchart.
+   - [TinyPNG](https://tinypng.com/) - Was used to reduce the file size of the background image and keep the image quality.
 
 
   ## Modules
@@ -187,7 +192,7 @@ No known bugs.
 
  - ### Python
   - A lot of errors were returned when running the Python code through [PEP8](https://pep8ci.herokuapp.com/).
-  The errors involved too long lines, whitespaces, trailing whitespaces and spaces. I resolve the trailing whitespace issue
+  The errors involved too long lines, whitespaces, trailing whitespaces and spaces. I resolved the trailing whitespace issue
   by enabling "Trim Trailing Whitespace" in file -> preferences -> settings, under the section file here in Gitpod. I also added a ruler in settings (settings.json)
   set to 78 to make sure that the lines I needed to correct wouldn't exceed that line. I worked my way
   to resolve all the errors. I ran the code through PEP8 again and no errors were returned.
@@ -200,7 +205,7 @@ No known bugs.
 
 
 ### Application Testing
-- The application was tested multiple times. All the input fields and logic has been tested properly to make sure that the user can't type other than valid input in the input fields. If the data is not valid, a relevant print message will be displayed to the user, which also have been tested properly.
+- The application has been tested multiple times. All the input fields and logic has been tested properly to make sure that the user can't type other than valid input in the input fields. If the data is not valid, a relevant print message will be displayed to the user, which also has been tested properly.
 
 
 ### Browser Testing
@@ -210,14 +215,15 @@ No known bugs.
 ### User Stories Testing
    #### First time user
 1. As a first time user I understand the purpose of the application easily with the clear introductury messages and image.
-2. As a first time user the interface for my travel inputs are intuitive with clear labeld input fields.
+2. As a first time user the interface for my travel inputs are intuitive with clear labeled input fields.
 3. As a first time user I get clear instructions and guidance should I enter a wrongful input.
 4. As a first time user I recieve a random destination along with the price, based on my continent input.
 5. As a first time user I can choose to add accommodation and transportation, and to choose different accommodations and
  transportation options.
 6. As a first time user I can re-choose a city if that is not what I expected or wanted.
 7. As a first time user I can see the travel details displayed in a summary after I have made all my choices.
-8. As a first time user I want the option to restart the application to make other choices, or to he exit the program.
+8. As a first time user I can restart the application and start over
+ or exit the program.
 
 
 
@@ -273,7 +279,7 @@ The live link can be found here - [The Random Destination Generator](https://ran
 4. I used this code to get a random choice of a city generated to the user:
     - https://pynative.com/python-random-choice/
 
-5. I used the steps and code from the Love Sandwich project to get the google spreadsheet connected. Additionally I used this guide:
+5. I used the steps and code from the Love Sandwich project to get the google spreadsheet connected. Additionally I used these guides:
    - https://data-flair.training/blogs/read-data-from-google-sheets-using-python/
   and some code from here:
     - https://aryanirani123.medium.com/read-and-write-data-in-google-sheets-using-python-and-the-google-sheets-api-6e206a242f20
@@ -286,7 +292,7 @@ The live link can be found here - [The Random Destination Generator](https://ran
     - https://pypi.org/project/termcolor/0.2/
     - https://www.stechies.com/print-colored-text-python/
 
-8. I used these guide on how to print a table using the tabulate module:
+8. I used these guides on how to print a table using the tabulate module:
     - https://pypi.org/project/tabulate/
     - https://www.stechies.com/create-table-python/
 
@@ -302,7 +308,7 @@ The live link can be found here - [The Random Destination Generator](https://ran
 
 
 ### Content
-The content were written by the developer.
+The content is written by the developer.
 
 ### Media
    The background image was taken from:

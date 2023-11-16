@@ -2,7 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
 from termcolor import colored
-from pyfiglet import figlet_format
 from tabulate import tabulate
 import random
 import os
@@ -29,13 +28,14 @@ def user_input():
     """
     Get input from user and to make sure user is making a valid
     choice. The while loop will repeat and request data that is valid.
-    The user can only enter a number starting from 1.
+    The user can only enter a number starting from 1 with a limitation of
+    15 travelers.
     """
     while True:
         user_choice = (input("  How many travelers are there?: \n  "
                              "(1 if you are traveling alone, 2 or"
                              " more for traveling with company)\n\n  "))
-        if user_choice.isdigit() and int(user_choice) > 0:
+        if user_choice.isdigit() and int(user_choice) > 0 and int(user_choice) <= 15:
             return int(user_choice)
         else:
             print(colored(
@@ -49,7 +49,7 @@ def travel_date():
     The datetime.strptime will parse the date. By using datetime.now.date
     it will then check and validate that the user's
     input is a date in the future and not in the past.
-    The weekday correspeonding to the date will also be printed.
+    The weekday corresponding to the date will also be printed.
     """
     while True:
         departure = input("  When do you want to travel? (YYYY-MM-DD):\n\n  ")
@@ -72,12 +72,12 @@ def duration():
     """
     Get input from the user about the duration of the stay with
     validation to make sure the user only can type in numbers,
-    starting from 1.
+    starting from 1 with a limitation of 90 days.
     """
     while True:
         travel_duration = (input("  How many days are you planning"
                                  " to stay?:\n\n  "))
-        if travel_duration.isdigit() and int(travel_duration) > 0:
+        if travel_duration.isdigit() and int(travel_duration) > 0 and int(travel_duration) <= 90:
             return int(travel_duration)
             print("\n")
         else:
@@ -135,7 +135,7 @@ def another_choice(user_selection):
     Get user input if user wants to get another city chosen.
     A while loop that will display the continent function if user
     chooses 'y' and break the loop if user chooses 'n'. Will then
-    proceed to next function.If neither y och n is entered a print
+    proceed to next function. If neither y och n is entered a print
     message will display to promt the user to make a choice.
     """
     while True:
@@ -175,7 +175,6 @@ def accommodation_choices():
     Prints out the choices for accommodation to the user and user can enter a
     number. If statements to return the correct value based on users choice.
     And validation if neither of the provided numbers are entered by the user.
-    The transportation_service function is then called to proceed.
     """
     print("  Select an option for accommodation\n")
     print("  1. Luxury Hotel")
@@ -260,10 +259,12 @@ random city generated. The summary will be displayed in a table using the
 tabulate module.
 """
 
-
 def summary(user_choice, departure, travel_duration, the_city, the_price,
             option, selection):
-
+    """
+    Sum up the price with number of people, displayed in the table
+    Define departure so both date and weekday are displayed in the table
+    """
     total_cost = user_choice * the_price
     departure, weekday = departure
 
@@ -298,24 +299,27 @@ def final_step():
     """
     Let's the user choose to start over or exit the program. If the user want
     to start over, the main function is called. If the user wants to exit the
-    terminal is cleared and a print message is displayed.
+    terminal is cleared and a print message is displayed. A while loop that
+    will run until user enters valid data.
     """
-    print("  What do you want to do next?:\n  ")
-    print("  1. Start over")
-    print("  2. Exit")
+    while True:
+        print("  What do you want to do next?:\n  ")
+        print("  1. Start over")
+        print("  2. Exit")
 
-    next = input("  Enter the number of your choice\n  ")
+        next = input("  Enter the number of your choice\n  ")
 
-    if next == "1":
-        print("  Okay...let's start from the beginning!\n ")
-        return main()
-    elif next == "2":
-        os.system('clear')
-        print("  Have a nice trip!\n ")
-    else:
-        print(colored(
+        if next == "1":
+            print("  Okay...let's start from the beginning!\n ")
+            return main()
+        elif next == "2":
+            os.system('clear')
+            print("  Have a nice trip!\n ")
+            break
+        else:
+            print(colored(
             "  Invalid choice. Please choose from the options"
-            "  provided\n  ", "red"))
+            " provided\n  ", "red"))
 
 
 def main():
@@ -370,7 +374,7 @@ def main():
     transportation = transportation_service()
     summary(user_choice, departure, travel_duration, the_city, the_price,
             accommodation, transportation)
-    next = final_step()
+    final_step()
 
 
 main()
