@@ -23,6 +23,31 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('random-destination')
 
 
+def ascii_art():
+    """
+    Ascii art files do display the welcome text and the airplane.
+    The files are openend and read, and if there is an error a print message
+    will be displayed in the exception.
+    """
+    # Ascii art files to print images
+    welcome_text = "welcome.txt"
+    airplane_file = "airplane.txt"
+
+    # Prints welcome text
+    try:
+        with open(welcome_text, "r") as file:
+            welcome = file.read()
+            print(welcome)
+
+    # Prints airplane image
+        with open(airplane_file, "r") as file:
+            airplane = file.read()
+            print(colored(airplane, color="light_blue"))
+            print("\n")
+    except FileNotFoundError:
+        print("  File not found")
+
+
 def user_input():
     """
     Get input from user and to make sure user is making a valid
@@ -78,7 +103,6 @@ def duration():
                                  " to stay?:\n\n  "))
         if travel_duration.isdigit() and 0 < int(travel_duration) <= 90:
             return int(travel_duration)
-            print("\n")
         else:
             print(colored("  Invalid input. Please enter a number", "red"))
 
@@ -310,7 +334,9 @@ def final_step():
         next = input("  Enter the number of your choice\n  ")
 
         if next == "1":
-            print("  Okay...let's start from the beginning!\n ")
+            os.system('clear')
+            print("  Okay...let's start from the beginning!\n  ")
+            sleep(2)
             return main()
         elif next == "2":
             os.system('clear')
@@ -324,42 +350,18 @@ def final_step():
 
 def main():
     """
-    Ascii art files do display the welcome text and the airplane.
-    The files are openend and read, and if there is an error a print message
-    will be displayed in the exception.
-    """
-    # Ascii art files to print images
-    welcome_text = "welcome.txt"
-    airplane_file = "airplane.txt"
-
-    # Prints welcome text
-    try:
-        with open(welcome_text, "r") as file:
-            welcome = file.read()
-            print(welcome)
-
-    # Prints airplane image
-        with open(airplane_file, "r") as file:
-            airplane = file.read()
-            print(colored(airplane, color="light_blue"))
-            print("\n")
-    except FileNotFoundError:
-        print("  File not found")
-
-    """
     A welcome message followed with an input that will prompt the user to
     start the program. The input message will display after 1.5 seconds.
     """
+    ascii_art()
     print("  Get a random travel destination based on your choice of "
           "continent.\n  ...Let's begin! \n")
     sleep(1.5)
     input("  Press Enter to continue...\n\n  ")
-
     """
     The functions below are called in the right order to display information
     to the user and get the input from the user
     """
-
     user_choice = user_input()
     departure = travel_date()
     travel_duration = duration()
@@ -376,13 +378,12 @@ def main():
             the_city, the_price = another_choice_input
         else:
             break
+
     accommodation = travel_package()
     transportation = transportation_service()
     summary(user_choice, departure, travel_duration, the_city, the_price,
             accommodation, transportation)
     final_step()
 
-
-main()
-
-
+if __name__ == "__main__":
+    main()

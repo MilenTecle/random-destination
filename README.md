@@ -94,7 +94,7 @@ The flowchart was produced via Lucid charts.
 
 
 - ### The Landing Page
-- Welcome text and image of airplane using ASCII
+- Welcome text and image of airplane using ASCII with a background image of a city.
 
   ![Logo](images/readme-images/logo.PNG)
 
@@ -128,7 +128,7 @@ The flowchart was produced via Lucid charts.
     ![Google spreadsheeet](images/readme-images/google-spreadsheet.PNG)
 
 
-7. An option to choose another city. The user needs to type y or n. If not invalid choice will display.
+7. An option to choose another city unlimited times. The user needs to type y or n. If not invalid choice will display.
 
     ![Another city choice](images/readme-images/another-city.PNG)
 
@@ -197,12 +197,12 @@ No known bugs.
   by enabling "Trim Trailing Whitespace" in file -> preferences -> settings, under the section file here in Gitpod. I also added a ruler in settings (settings.json)
   set to 78 to make sure that the lines I needed to correct wouldn't exceed that line. I worked my way
   to resolve all the errors. I ran the code through PEP8 again and no errors were returned.
-    - [Python errors](images/pep8/error.PNG)
-    - [Python all clear](images/pep8/all-clear.PNG)
+    - [Python errors](testing/error.PNG)
+    - [Python all clear](testing/all-clear.PNG)
 
  - ### Accessibility
-  - The site achieved a Lighthouse accessibility score of 100%...
-    - [Lighthouse result](assets/test-results/lighthouse-result.png)
+  - The site recieved a good Lighthouse result.
+    - [Lighthouse result](testing/lighthouse-result.PNG)
 
 
 ### Application Testing
@@ -302,7 +302,7 @@ The live link can be found here - [The Random Destination Generator](https://ran
 
 10. I used my notes from the section "Reading Data from a file" and "Try and Except Statements" in the LMS to understand how to read the files in the main function.
 
-11. I struggled a bit to get the updated city and price from the another_choice function. This helped me understand and fix the issue:
+11. I struggled a lot to get the updated city and price from the another_choice function, and to fix the while loop to ask the question again. This, along with a lot of trying helped me understand and fix the issue:
     - https://rollbar.com/blog/python-typeerror-nonetype-object-is-not-iterable/
     - https://stackoverflow.com/questions/75577437/typeerror-cannot-unpack-non-iterable-nonetype-object-not-sure-where-it-is-comi
 
