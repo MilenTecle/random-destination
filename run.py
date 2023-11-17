@@ -365,11 +365,17 @@ def main():
     travel_duration = duration()
     user_selection = continent()
     the_city, the_price = random_destination(user_selection)
-    another_choice_input = another_choice(user_selection)
-    # Prevents a NoneType error when the user chooses no in the another_choice
-    # function that returns None
-    if another_choice_input is not None:
-        the_city, the_price = another_choice_input
+    """
+    Prevents a NoneType error when the user chooses no in the another_choice
+    function that returns None. A while loop that will keep running until the
+    user chooses no on the choose another city question.
+    """
+    while True:
+        another_choice_input = another_choice(user_selection)
+        if another_choice_input is not None:
+            the_city, the_price = another_choice_input
+        else:
+            break
     accommodation = travel_package()
     transportation = transportation_service()
     summary(user_choice, departure, travel_duration, the_city, the_price,
@@ -378,4 +384,5 @@ def main():
 
 
 main()
+
 
