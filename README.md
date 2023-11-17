@@ -142,7 +142,7 @@ The flowchart was produced via Lucid charts.
     ![Add transportation](images/readme-images/add-transportation.PNG)
 
 
-10. The travels details are then presentend in a table for the user. If the user didn't choose to add transportation or accomodation, it will not be included in the travel summary. If the user chooses another city, it will display the new random city in the summary.
+10. The travels details are then presentend in a table for the user. If the user didn't choose to add transportation or accomodation, it will not be included in the travel summary. If the user chooses another city, it will display the new random city in the summary. The price presented is calulated based on number of people.
 
     ![Travel summary](images/readme-images/travel-summary.PNG)
 
