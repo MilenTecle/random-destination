@@ -30,8 +30,8 @@ def ascii_art():
     will be displayed in the exception.
     """
     # Ascii art files to print images
-    welcome_text = "welcome.txt"
-    airplane_file = "airplane.txt"
+    welcome_text = "ascii-art/welcome.txt"
+    airplane_file = "ascii-art/airplane.txt"
 
     # Prints welcome text
     try:
@@ -384,6 +384,7 @@ def main():
     summary(user_choice, departure, travel_duration, the_city, the_price,
             accommodation, transportation)
     final_step()
+
 
 if __name__ == "__main__":
     main()

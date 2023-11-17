@@ -146,9 +146,10 @@ The flowchart was produced via Lucid charts.
 
     ![Travel summary](images/readme-images/travel-summary.PNG)
 
-11. The final step is to choose wether to start over or exit the program. If the user chooses to 1. Start over, the program will start all over. If the user chooses 2. Exit, the progam will clear the terminal and print a message. The user needs to choose 1 or 2, if not invalid choice will display.
+11. The final step is to choose wether to start over or exit the program. If the user chooses to 1. Start over, the program will clear the terminal with a print message and start all over. If the user chooses 2. Exit, the progam will clear the terminal and print a message. The user needs to choose 1 or 2, if not invalid choice will display.
 
     ![Final step](images/readme-images/final-step.PNG)
+    ![Start over](images/readme-images/start-over.PNG)
     ![Exit](images/readme-images/exit.PNG)
 
 
